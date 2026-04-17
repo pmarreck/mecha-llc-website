@@ -32,41 +32,39 @@
   // Visual layout: "(" "2" "0" "3" ")" " " "5" "7" "0" "-" "4" "0" "9" "6"
   // Structural chars + digits share a single SVG; visual order is set by
   // the x attribute on each <tspan>, while DOM order is scrambled.
+  // Positions are hand-tuned for Inter 15px with tabular-nums: parens/hyphen
+  // have narrower advance than digits, so cell widths are not uniform.
   function buildPhoneSvg() {
     const digits = flatDigits(); // ['2','0','3','5','7','0','4','0','9','6']
-    const structural = [
-      { ch: '(', xCh: 0  },
-      { ch: ')', xCh: 4  },
-      { ch: '-', xCh: 9  },
-    ];
 
-    // Visual arrangement in character cells (0-based columns):
-    // 0 "("  1 "2"  2 "0"  3 "3"  4 ")"  5 " "  6 "5"  7 "7"  8 "0"
-    // 9 "-" 10 "4" 11 "0" 12 "9" 13 "6"
+    // Explicit pixel x positions per glyph (left edge).
+    // Digit advance ~9px (tabular-nums); paren advance ~5px; hyphen advance ~5px.
+    // One ~5px visual gap appears naturally between ')' and '5' (the space).
     const cells = [
-      { xCh: 1,  ch: digits[0] },
-      { xCh: 2,  ch: digits[1] },
-      { xCh: 3,  ch: digits[2] },
-      { xCh: 6,  ch: digits[3] },
-      { xCh: 7,  ch: digits[4] },
-      { xCh: 8,  ch: digits[5] },
-      { xCh: 10, ch: digits[6] },
-      { xCh: 11, ch: digits[7] },
-      { xCh: 12, ch: digits[8] },
-      { xCh: 13, ch: digits[9] },
+      { x: 0,   ch: '('        },
+      { x: 5,   ch: digits[0]  }, // 2
+      { x: 14,  ch: digits[1]  }, // 0
+      { x: 23,  ch: digits[2]  }, // 3
+      { x: 32,  ch: ')'        },
+      { x: 42,  ch: digits[3]  }, // 5
+      { x: 51,  ch: digits[4]  }, // 7
+      { x: 60,  ch: digits[5]  }, // 0
+      { x: 69,  ch: '-'        },
+      { x: 74,  ch: digits[6]  }, // 4
+      { x: 83,  ch: digits[7]  }, // 0
+      { x: 92,  ch: digits[8]  }, // 9
+      { x: 101, ch: digits[9]  }, // 6
     ];
 
-    const allCells = cells.concat(structural);
     // Shuffle DOM order deterministically: reverse, then rotate. Result is
     // not alphabetical and not matched by common phone regexes when
     // concatenated.
-    allCells.reverse();
+    cells.reverse();
     const rotate = 5;
-    const rotated = allCells.slice(rotate).concat(allCells.slice(0, rotate));
+    const rotated = cells.slice(rotate).concat(cells.slice(0, rotate));
 
-    const CHAR_W = 9; // px advance per character cell in our chosen font/size
     const svgNS = 'http://www.w3.org/2000/svg';
-    const width = 14 * CHAR_W;
+    const width = 112;
     const height = 20;
 
     const svg = document.createElementNS(svgNS, 'svg');
@@ -82,11 +80,12 @@
     text.setAttribute('y', '15');
     text.setAttribute('font-family', "Inter, system-ui, sans-serif");
     text.setAttribute('font-size', '15');
+    text.setAttribute('font-variant-numeric', 'tabular-nums');
     text.setAttribute('fill', 'currentColor');
 
     for (const cell of rotated) {
       const tspan = document.createElementNS(svgNS, 'tspan');
-      tspan.setAttribute('x', String(cell.xCh * CHAR_W));
+      tspan.setAttribute('x', String(cell.x));
       tspan.textContent = cell.ch;
       text.appendChild(tspan);
     }
