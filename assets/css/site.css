@@ -382,3 +382,66 @@ p { margin: 0; }
 [data-phone] svg { color: var(--fg); }
 [data-phone] svg:hover { color: var(--accent-dim); }
 [data-phone] svg:focus-visible { outline: 1px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+
+/* ==========================================================
+   Format ticker (home only)
+   ========================================================== */
+.ticker {
+  margin-top: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--fg-muted);
+}
+
+.ticker .label {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: var(--accent-dim);
+  text-transform: uppercase;
+}
+
+.ticker .box {
+  display: inline-block;
+  width: 8.5ch;
+  height: 2.2em;
+  overflow: hidden;
+  position: relative;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-strong);
+  border-radius: 6px;
+  padding: 0 0.6em;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-align: center;
+}
+
+.ticker .track {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ticker .track > div {
+  height: 2.2em;
+  line-height: 2.2em;
+  flex-shrink: 0;
+}
+
+.ticker .badge {
+  font-size: 10px;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--border-strong);
+  color: var(--accent-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}

@@ -120,5 +120,140 @@
     mountPhone();
   }
 
-  // Ticker, fade-ins, and edge-light are added in later tasks.
+  /* -------------------------------------------------
+     2. Format ticker (home only)
+     ------------------------------------------------- */
+  const formats = [
+    // Images
+    {ext: "png", cat: "image"}, {ext: "jpg", cat: "image"}, {ext: "gif", cat: "image"},
+    {ext: "bmp", cat: "image"}, {ext: "webp", cat: "image"}, {ext: "tiff", cat: "image"},
+    {ext: "heic", cat: "image"}, {ext: "avif", cat: "image"}, {ext: "exr", cat: "image"},
+    {ext: "jxl", cat: "image"}, {ext: "svg", cat: "image"}, {ext: "apng", cat: "image"},
+    {ext: "qoi", cat: "image"}, {ext: "psd", cat: "image"}, {ext: "dng", cat: "image"},
+    {ext: "ico", cat: "image"}, {ext: "icns", cat: "image"}, {ext: "dpx", cat: "image"},
+    {ext: "tga", cat: "image"}, {ext: "pam", cat: "image"}, {ext: "cr2", cat: "image"},
+    {ext: "nef", cat: "image"}, {ext: "arw", cat: "image"},
+    // Video
+    {ext: "mp4", cat: "video"}, {ext: "mkv", cat: "video"}, {ext: "mov", cat: "video"},
+    {ext: "avi", cat: "video"}, {ext: "webm", cat: "video"}, {ext: "flv", cat: "video"},
+    {ext: "mpg", cat: "video"}, {ext: "m2ts", cat: "video"}, {ext: "ts", cat: "video"},
+    {ext: "3gp", cat: "video"}, {ext: "wmv", cat: "video"}, {ext: "swf", cat: "video"},
+    {ext: "dv", cat: "video"}, {ext: "ivf", cat: "video"}, {ext: "rm", cat: "video"},
+    {ext: "asf", cat: "video"}, {ext: "vob", cat: "video"},
+    // Audio
+    {ext: "mp3", cat: "audio"}, {ext: "flac", cat: "audio"}, {ext: "wav", cat: "audio"},
+    {ext: "m4a", cat: "audio"}, {ext: "aiff", cat: "audio"}, {ext: "ogg", cat: "audio"},
+    {ext: "opus", cat: "audio"}, {ext: "mid", cat: "audio"}, {ext: "ape", cat: "audio"},
+    {ext: "wv", cat: "audio"}, {ext: "aac", cat: "audio"}, {ext: "ac3", cat: "audio"},
+    {ext: "dts", cat: "audio"}, {ext: "dsf", cat: "audio"}, {ext: "mp2", cat: "audio"},
+    {ext: "caf", cat: "audio"}, {ext: "wma", cat: "audio"}, {ext: "amr", cat: "audio"},
+    {ext: "mod", cat: "audio"}, {ext: "xm", cat: "audio"}, {ext: "s3m", cat: "audio"},
+    // Archives
+    {ext: "zip", cat: "archive"}, {ext: "gz", cat: "archive"}, {ext: "bz2", cat: "archive"},
+    {ext: "xz", cat: "archive"}, {ext: "zst", cat: "archive"}, {ext: "7z", cat: "archive"},
+    {ext: "rar", cat: "archive"}, {ext: "tar", cat: "archive"}, {ext: "cab", cat: "archive"},
+    {ext: "iso", cat: "archive"}, {ext: "dmg", cat: "archive"}, {ext: "rpm", cat: "archive"},
+    {ext: "sit", cat: "archive"}, {ext: "wim", cat: "archive"}, {ext: "vmdk", cat: "archive"},
+    {ext: "msi", cat: "archive"}, {ext: "br", cat: "archive"}, {ext: "kmz", cat: "archive"},
+    // Documents
+    {ext: "pdf", cat: "document"}, {ext: "docx", cat: "document"}, {ext: "xlsx", cat: "document"},
+    {ext: "pptx", cat: "document"}, {ext: "doc", cat: "document"}, {ext: "xls", cat: "document"},
+    {ext: "ppt", cat: "document"}, {ext: "odt", cat: "document"}, {ext: "epub", cat: "document"},
+    {ext: "rtf", cat: "document"}, {ext: "pages", cat: "document"}, {ext: "sqlite", cat: "document"},
+    {ext: "mdb", cat: "document"}, {ext: "dbf", cat: "document"},
+    // Creative
+    {ext: "ai", cat: "creative"}, {ext: "eps", cat: "creative"}, {ext: "sketch", cat: "creative"},
+    {ext: "aep", cat: "creative"}, {ext: "prproj", cat: "creative"}, {ext: "indd", cat: "creative"},
+    {ext: "idml", cat: "creative"}, {ext: "fcpxml", cat: "creative"}, {ext: "drp", cat: "creative"},
+    // DAW / Music Production
+    {ext: "flp", cat: "daw"}, {ext: "als", cat: "daw"}, {ext: "rpp", cat: "daw"},
+    {ext: "cpr", cat: "daw"}, {ext: "ptx", cat: "daw"}, {ext: "band", cat: "daw"},
+    {ext: "reason", cat: "daw"}, {ext: "logicx", cat: "daw"}, {ext: "song", cat: "daw"},
+    // 3D / CAD
+    {ext: "stl", cat: "3d/cad"}, {ext: "obj", cat: "3d/cad"}, {ext: "glb", cat: "3d/cad"},
+    {ext: "gltf", cat: "3d/cad"}, {ext: "ply", cat: "3d/cad"}, {ext: "3mf", cat: "3d/cad"},
+    {ext: "blend", cat: "3d/cad"}, {ext: "dwg", cat: "3d/cad"}, {ext: "step", cat: "3d/cad"},
+    {ext: "dxf", cat: "3d/cad"},
+    // Medical
+    {ext: "dcm", cat: "medical"}, {ext: "dicom", cat: "medical"},
+    {ext: "nii", cat: "medical"},
+    // Scientific
+    {ext: "hdf5", cat: "scientific"}, {ext: "parquet", cat: "scientific"},
+    {ext: "netcdf", cat: "scientific"}, {ext: "fits", cat: "scientific"},
+    {ext: "fasta", cat: "scientific"}, {ext: "fastq", cat: "scientific"},
+    {ext: "shp", cat: "scientific"}, {ext: "pdb", cat: "scientific"},
+    {ext: "cif", cat: "scientific"},
+    // Financial
+    {ext: "qbw", cat: "financial"}, {ext: "qbb", cat: "financial"},
+    {ext: "ofx", cat: "financial"}, {ext: "qif", cat: "financial"},
+    {ext: "nacha", cat: "financial"}, {ext: "mt940", cat: "financial"},
+    {ext: "bai2", cat: "financial"},
+    // Fonts
+    {ext: "ttf", cat: "font"}, {ext: "otf", cat: "font"},
+    {ext: "woff", cat: "font"}, {ext: "woff2", cat: "font"},
+    // Executables
+    {ext: "exe", cat: "executable"}, {ext: "elf", cat: "executable"},
+    {ext: "wasm", cat: "executable"}, {ext: "class", cat: "executable"},
+    {ext: "dll", cat: "executable"}, {ext: "so", cat: "executable"},
+    {ext: "beam", cat: "executable"},
+    // Crypto
+    {ext: "pem", cat: "crypto"}, {ext: "der", cat: "crypto"}, {ext: "crt", cat: "crypto"},
+    // Email
+    {ext: "eml", cat: "email"}, {ext: "mbox", cat: "email"},
+    // Text/Data
+    {ext: "json", cat: "text"}, {ext: "xml", cat: "text"}, {ext: "csv", cat: "text"},
+    {ext: "toml", cat: "text"}, {ext: "html", cat: "text"},
+    {ext: "md", cat: "text"}, {ext: "kml", cat: "text"},
+    // Network
+    {ext: "pcap", cat: "network"}, {ext: "pcapng", cat: "network"},
+    // Games
+    {ext: "nes", cat: "game"}, {ext: "sfc", cat: "game"}, {ext: "n64", cat: "game"},
+    {ext: "gb", cat: "game"}, {ext: "gba", cat: "game"}, {ext: "nds", cat: "game"},
+    {ext: "gen", cat: "game"}, {ext: "chd", cat: "game"}, {ext: "wad", cat: "game"},
+    {ext: "bsp", cat: "game"}, {ext: "vpk", cat: "game"},
+  ];
+
+  function startTicker() {
+    const track = document.getElementById('ticker-track');
+    if (!track) return; // only exists on home
+
+    const currentEl = track.children[0];
+    const nextEl    = track.children[1];
+    const catEl     = document.getElementById('ticker-cat');
+    if (!currentEl || !nextEl || !catEl) return;
+
+    let idx = 0;
+    currentEl.textContent = '.' + formats[0].ext;
+    catEl.textContent = formats[0].cat;
+
+    function cycle() {
+      const nextIdx = (idx + 1) % formats.length;
+      nextEl.textContent = '.' + formats[nextIdx].ext;
+
+      track.style.transform = 'translateY(-2.2em)';
+
+      setTimeout(() => {
+        // Instant reset after animation completes
+        track.style.transition = 'none';
+        track.style.transform = 'translateY(0)';
+        currentEl.textContent = '.' + formats[nextIdx].ext;
+        catEl.textContent = formats[nextIdx].cat;
+        // Force reflow, then restore transition
+        void track.offsetWidth;
+        track.style.transition = '';
+      }, 250);
+
+      idx = nextIdx;
+    }
+
+    setInterval(cycle, 500);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', startTicker);
+  } else {
+    startTicker();
+  }
+
+  // Fade-ins and edge-light are added in later tasks.
 })();
