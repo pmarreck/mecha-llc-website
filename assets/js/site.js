@@ -255,5 +255,41 @@
     startTicker();
   }
 
-  // Fade-ins and edge-light are added in later tasks.
+  /* -------------------------------------------------
+     3. Scroll fade-ins
+     ------------------------------------------------- */
+  function initFadeIns() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      // Show everything immediately; no transform animations.
+      document.querySelectorAll('.reveal').forEach((el) => el.classList.add('in-view'));
+      return;
+    }
+
+    if (!('IntersectionObserver' in window)) {
+      document.querySelectorAll('.reveal').forEach((el) => el.classList.add('in-view'));
+      return;
+    }
+
+    const io = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          io.unobserve(entry.target);
+        }
+      }
+    }, {
+      threshold: 0.15,
+      rootMargin: '0px 0px -10% 0px',
+    });
+
+    document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFadeIns);
+  } else {
+    initFadeIns();
+  }
+
+  // Edge-light is added in later tasks.
 })();
