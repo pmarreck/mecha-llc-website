@@ -224,7 +224,8 @@ p { margin: 0; }
    Focus indicators (WCAG 2.4.7)
    ========================================================== */
 .site-nav .links a:focus-visible,
-.btn:focus-visible {
+.btn:focus-visible,
+.card:focus-visible {
   outline: 2px solid var(--accent-dim);
   outline-offset: 2px;
   border-radius: 3px;
@@ -270,4 +271,29 @@ p { margin: 0; }
 
 @media (max-width: 640px) {
   .teaser-grid { grid-template-columns: 1fr; }
+}
+
+/* ==========================================================
+   Consulting page
+   ========================================================== */
+.service-grid {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+@media (max-width: 780px) {
+  .service-grid { grid-template-columns: 1fr; }
+}
+
+.engagement-blurb {
+  margin-top: 36px;
+  padding: 18px;
+  border-left: 2px solid var(--accent);
+  background: rgba(59, 130, 246, 0.05);
+  font-size: 13px;
+  color: var(--fg-muted);
+  line-height: 1.55;
+  max-width: 720px;
 }
