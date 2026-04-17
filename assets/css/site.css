@@ -1,0 +1,74 @@
+/* ============================================================
+   Mecha LLC — shared stylesheet
+   Tokens -> base -> layout -> components -> features.
+   ============================================================ */
+
+:root {
+  --bg: #0f1115;
+  --bg-elev: #141821;
+  --fg: #eaeaea;
+  --fg-muted: #9fb1c5;
+  --fg-subtle: #8aa0b8;
+  --accent: #3b82f6;
+  --accent-dim: #7aa4d6;
+  --border: #1f2833;
+  --border-strong: #2a3340;
+
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'SF Mono', 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+
+  --page-max: 1040px;
+  --page-pad: clamp(20px, 4vw, 56px);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover { color: var(--accent-dim); }
+
+img { display: block; max-width: 100%; height: auto; }
+
+h1, h2, h3, h4 { margin: 0; font-weight: 650; letter-spacing: -0.01em; }
+
+p { margin: 0; }
+
+/* Page shell */
+.page {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 0 var(--page-pad);
+}
+
+/* Eyebrow labels */
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--accent-dim);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+/* Muted subtitle below hero */
+.subhead {
+  color: var(--fg-muted);
+  font-size: 15px;
+  line-height: 1.6;
+  max-width: 560px;
+  margin-top: 16px;
+}
