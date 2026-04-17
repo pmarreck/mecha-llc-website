@@ -297,3 +297,83 @@ p { margin: 0; }
   line-height: 1.55;
   max-width: 720px;
 }
+
+/* ==========================================================
+   Software page
+   ========================================================== */
+.app-list {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  max-width: 820px;
+}
+
+.app-card {
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 18px;
+  display: grid;
+  grid-template-columns: 64px 1fr auto;
+  gap: 16px;
+  align-items: center;
+  position: relative;
+}
+
+.app-card .icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  object-fit: cover;
+  background: #1a2030;
+}
+
+.app-card .title-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.app-card h3 { font-size: 16px; font-weight: 600; }
+
+.app-card .pill {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+  border: 1px solid #2a3e5c;
+  padding: 2px 7px;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+
+.app-card p.description {
+  font-size: 13px;
+  color: var(--fg-muted);
+  margin-top: 6px;
+  line-height: 1.5;
+}
+
+.app-card .status {
+  font-size: 11px;
+  color: var(--accent-dim);
+  margin-top: 6px;
+}
+
+.app-card .repo-link {
+  font-size: 11px;
+  padding: 5px 10px;
+  border: 1px solid var(--border-strong);
+  color: var(--fg);
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.app-card .repo-link:hover { border-color: var(--accent-dim); }
+
+@media (max-width: 640px) {
+  .app-card { grid-template-columns: 48px 1fr; }
+  .app-card .icon { width: 48px; height: 48px; }
+  .app-card .repo-link { grid-column: 2; justify-self: start; }
+}
