@@ -9,11 +9,40 @@
   <script defer src="/assets/js/site.js"></script>
 </head>
 <body>
-  <main>
-    <section class="hero">
-      <p class="eyebrow">Data integrity</p>
-      <h1>High-stakes engineering<br>that holds up under audit.</h1>
+  <div class="page">
+    <nav class="site-nav">
+      <a href="/" class="brand">MECHA · LLC</a>
+      <div class="links">
+        <a href="/consulting/">Consulting</a>
+        <a href="/software/">Software</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+
+    <main>
+      <section class="hero">
+        <p class="eyebrow">Data integrity</p>
+        <h1>High-stakes engineering<br>that holds up under audit.</h1>
+      </section>
+    </main>
+
+    <section id="contact" class="contact-section">
+      <h2>Contact</h2>
+      <div class="contact-rows">
+        <div class="contact-row">
+          <span class="label">Email</span>
+          <a class="value" href="mailto:peter@marreck.com?subject=Came%20from%20your%20homepage">peter@marreck.com</a>
+        </div>
+        <div class="contact-row">
+          <span class="label">Phone</span>
+          <span class="value" data-phone><!-- obfuscated SVG injected in Task 10 --></span>
+        </div>
+      </div>
     </section>
-  </main>
+
+    <footer class="site-footer">
+      &copy; Mecha LLC
+    </footer>
+  </div>
 </body>
 </html>
