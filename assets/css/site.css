@@ -377,3 +377,8 @@ p { margin: 0; }
   .app-card .icon { width: 48px; height: 48px; }
   .app-card .repo-link { grid-column: 2; justify-self: start; }
 }
+
+/* Phone SVG — inherits color from the surrounding .value */
+[data-phone] svg { color: var(--fg); }
+[data-phone] svg:hover { color: var(--accent-dim); }
+[data-phone] svg:focus { outline: 1px solid var(--accent); outline-offset: 2px; border-radius: 2px; }

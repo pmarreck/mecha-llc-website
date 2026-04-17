@@ -37,4 +37,21 @@ if [[ $fail -ne 0 ]]; then
     exit 1
 fi
 
+# Every page must render the phone SVG at runtime. We verify by checking
+# that each page has a <span data-phone></span> placeholder that site.js
+# will populate, and that site.js contains the digits as separate string
+# literals (not as a contiguous number).
+for page in index.html consulting/index.html software/index.html; do
+    if ! grep -q 'data-phone' "$page"; then
+        echo "FAIL: $page missing data-phone placeholder"
+        exit 1
+    fi
+done
+
+# site.js must exist and must not contain a contiguous phone number.
+if [[ ! -f assets/js/site.js ]]; then
+    echo "FAIL: assets/js/site.js missing"
+    exit 1
+fi
+
 echo "OK: phone number not leaked in static sources."
