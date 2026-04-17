@@ -291,5 +291,49 @@
     initFadeIns();
   }
 
-  // Edge-light is added in later tasks.
+  /* -------------------------------------------------
+     4. Cursor-proximity edge light on cards
+     ------------------------------------------------- */
+  function initEdgeLight() {
+    if (window.matchMedia('(pointer: coarse)').matches) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const cards = Array.from(document.querySelectorAll('.card, .app-card'));
+    if (cards.length === 0) return;
+
+    let pending = false;
+    let lastX = 0, lastY = 0;
+
+    function update() {
+      pending = false;
+      for (const card of cards) {
+        const r = card.getBoundingClientRect();
+        const x = lastX - r.left;
+        const y = lastY - r.top;
+        const cx = r.width / 2;
+        const cy = r.height / 2;
+        const dist = Math.hypot(x - cx, y - cy);
+        const maxRadius = Math.max(r.width, r.height) * 1.2;
+        const glow = Math.max(0, 1 - dist / maxRadius);
+        card.style.setProperty('--mx', `${x}px`);
+        card.style.setProperty('--my', `${y}px`);
+        card.style.setProperty('--glow', glow.toFixed(3));
+      }
+    }
+
+    window.addEventListener('mousemove', (e) => {
+      lastX = e.clientX;
+      lastY = e.clientY;
+      if (!pending) {
+        pending = true;
+        requestAnimationFrame(update);
+      }
+    }, { passive: true });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initEdgeLight);
+  } else {
+    initEdgeLight();
+  }
 })();

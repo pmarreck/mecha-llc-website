@@ -465,3 +465,45 @@ p { margin: 0; }
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
 }
+
+/* ==========================================================
+   Cursor-proximity edge light on cards
+   ========================================================== */
+.card,
+.app-card {
+  --mx: 50%;
+  --my: 50%;
+  --glow: 0;
+}
+
+.card::before,
+.app-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: radial-gradient(
+    420px circle at var(--mx) var(--my),
+    rgba(122, 164, 214, calc(var(--glow) * 0.55)),
+    transparent 45%
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  transition: opacity 120ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card::before, .app-card::before { display: none; }
+}
+
+@media (pointer: coarse) {
+  .card::before, .app-card::before { display: none; }
+}
