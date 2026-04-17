@@ -160,3 +160,62 @@ p { margin: 0; }
 @media (max-width: 640px) {
   .contact-section .contact-rows { grid-template-columns: 1fr; }
 }
+
+/* ==========================================================
+   Hero
+   ========================================================== */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 8px 0 48px;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: -40px 0 0 0;
+  background: radial-gradient(700px 260px at 78% 0%, rgba(120, 170, 255, 0.20), transparent 62%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero > * { position: relative; z-index: 1; }
+
+.hero h1 {
+  font-size: clamp(28px, 4.5vw, 40px);
+  line-height: 1.12;
+  max-width: 680px;
+}
+
+/* ==========================================================
+   Buttons
+   ========================================================== */
+.btn-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 11px 18px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  transition: background 160ms ease, border-color 160ms ease, color 160ms ease;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+}
+.btn-primary:hover { background: #5a95f5; color: #fff; }
+
+.btn-secondary {
+  border-color: var(--border-strong);
+  color: var(--fg);
+}
+.btn-secondary:hover { border-color: var(--accent-dim); color: var(--fg); }
