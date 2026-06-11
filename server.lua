@@ -1,5 +1,12 @@
 #!/usr/bin/env luajit
 
+-- PERF NOTE (deferred 2026-06-05): Per-request HTTP response building does
+-- string concatenation in a few spots. LuaJIT's string.buffer (with the FFI
+-- reserve/commit path for the body, :put for short headers/glyphs) would let
+-- each response be assembled into one growable buffer and flushed via a single
+-- C.write — see ~/.claude/CLAUDE.md "LuaJIT Performance" for the canonical
+-- idiom. Deferred for now: low-traffic personal site, not a measured
+-- bottleneck. Benchmark with `hyperfine -N --warmup 3` before/after.
 local socket = require("socket")
 local lfs = require("lfs")
 
