@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# Master test runner: runs every tests/*.sh, accumulates failures,
+# exit code = number of failed suites. No set -e (suites under test may
+# legitimately exercise non-zero paths); set -u for undefined-var safety.
+set -u
+
+cd "$(dirname "$0")"
+
+failures=0
+for suite in tests/*.sh; do
+	echo "── ${suite}"
+	if bash "$suite"; then
+		echo "   ✓ ${suite} passed"
+	else
+		echo "   ✗ ${suite} FAILED" >&2
+		failures=$((failures + 1))
+	fi
+done
+
+echo
+if [ "$failures" -eq 0 ]; then
+	echo "All test suites passed."
+else
+	echo "${failures} test suite(s) FAILED." >&2
+fi
+exit "$failures"

@@ -1,0 +1,7 @@
+# Dirtree: Stateful directory trees in the CLI for humans and LLMs. https://github.com/pmarreck/dirtree
+ver=1.2
+annotate=[
+	PLAN.md = Mission plan/checkboxes for umbrella site build (gitignored: public repo)
+	docs/MECHA_RELEASE_PLAN.md = Canonical LOCKED commercial release plan (gitignored: internal strategy, public repo)
+	test = Master Bash test runner: runs tests/*.sh, accumulates failures, exit = fail count
+]
