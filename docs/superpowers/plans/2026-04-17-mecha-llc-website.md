@@ -148,16 +148,8 @@ ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
 
 PATTERNS=(
-    '2035704096'
-    '203-570-4096'
-    '(203) 570-4096'
-    '(203)570-4096'
-    '203.570.4096'
-    '2035704'
-    '5704096'
-    '+12035704096'
-    'tel:+12035704096'
-    'tel:2035704096'
+    '<phone-elided>'
+    'tel:<phone-elided>'
 )
 
 PAGES=("index.html" "consulting/index.html" "software/index.html" "assets/js/site.js")
@@ -1348,8 +1340,8 @@ Expected: `OK: phone number not leaked in static sources.`
 - [ ] **Step 7: Manual verification in browser**
 
 Start `./server.lua`, visit `/`, scroll to contact section. Confirm:
-- Phone reads as `(203) 570-4096` visually.
-- `Ctrl+F` "2035704096" in view-source — no match.
+- Phone reads as `<phone-elided>` visually.
+- `Ctrl+F` "<phone-elided>" in view-source — no match.
 - Clicking the phone launches the system's phone handler (or shows browser's "open tel:" prompt).
 - Keyboard Tab reaches the phone, Enter activates it.
 
@@ -1865,14 +1857,14 @@ SERVER_PID=$!
 sleep 0.3
 for path in / /consulting/ /software/; do
     echo "== $path =="
-    curl -sf "http://127.0.0.1:8080$path" | grep -E '2035704096|\(203\)|570-4096|2035704' && echo "LEAK DETECTED" || echo "clean"
+    curl -sf "http://127.0.0.1:8080$path" | grep -E '<phone-elided>|<area-elided>|<phone-elided>|<phone-elided>' && echo "LEAK DETECTED" || echo "clean"
 done
 kill $SERVER_PID
 ```
 
 Expected: each page prints `clean`.
 
-5. Clicking the phone SVG invokes `tel:+12035704096` (test on phone or with devtools network panel).
+5. Clicking the phone SVG invokes `tel:<phone-elided>` (test on phone or with devtools network panel).
 6. All mailto links open with subject `Came from your homepage`.
 7. `prefers-reduced-motion: reduce` disables motion.
 

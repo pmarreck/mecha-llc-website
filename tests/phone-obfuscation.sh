@@ -1,57 +1,73 @@
 #!/usr/bin/env bash
-# Asserts the phone number does not appear as a contiguous string in any
-# page source. The number must be present visually via SVG, assembled by
-# JS at click time for tel: navigation.
-set -euo pipefail
+# Asserts the phone number never appears as a contiguous machine-readable
+# string in ANY tracked file (tracked ⇒ published: the repo is public AND
+# every tracked file is served verbatim at mecha.llc/<path> by GitHub Pages).
+# The number must be present only visually via SVG, assembled by JS at
+# click time for tel: navigation.
+#
+# The patterns below are CONSTRUCTED AT RUNTIME from fragments so that this
+# file itself never contains a contiguous, harvestable form. (Its previous
+# version embedded the plaintext number ten ways — the control was the leak.)
+set -u
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
 
+# Fragments — never concatenated on disk, only in memory at test time.
+cc="1"
+area="203"
+mid="570"
+last="4096"
+
 PATTERNS=(
-    '2035704096'
-    '203-570-4096'
-    '(203) 570-4096'
-    '(203)570-4096'
-    '203.570.4096'
-    '2035704'
-    '5704096'
-    '+12035704096'
-    'tel:+12035704096'
-    'tel:2035704096'
+	"${area}${mid}${last}"
+	"${area}-${mid}-${last}"
+	"(${area}) ${mid}-${last}"
+	"(${area})${mid}-${last}"
+	"${area}.${mid}.${last}"
+	"${area}${mid}${last:0:1}"
+	"${mid}${last}"
+	"+${cc}${area}${mid}${last}"
+	"tel:+${cc}${area}${mid}${last}"
+	"tel:${area}${mid}${last}"
 )
 
-PAGES=("index.html" "consulting/index.html" "software/index.html" "assets/js/site.js")
+# The publication set: every tracked file. jj is canonical here; fall back
+# to git ls-files for environments without jj (e.g. a bare CI checkout).
+if command -v jj >/dev/null 2>&1 && [ -d .jj ]; then
+	FILES="$(jj file list)"
+else
+	FILES="$(git ls-files)"
+fi
 
 fail=0
-for page in "${PAGES[@]}"; do
-    [[ -f "$page" ]] || continue
-    for pattern in "${PATTERNS[@]}"; do
-        if grep -Fq "$pattern" "$page"; then
-            echo "FAIL: $page leaks phone pattern: '$pattern'"
-            fail=1
-        fi
-    done
-done
+while IFS= read -r file; do
+	[ -f "$file" ] || continue
+	for pattern in "${PATTERNS[@]}"; do
+		# -a: treat binaries as text too (catches EXIF/metadata leaks in images)
+		if grep -aFq -- "$pattern" "$file"; then
+			echo "FAIL: tracked file '$file' leaks a contiguous phone pattern"
+			fail=1
+		fi
+	done
+done <<< "$FILES"
 
-if [[ $fail -ne 0 ]]; then
-    exit 1
-fi
-
-# Every page must render the phone SVG at runtime. We verify by checking
-# that each page has a <span data-phone></span> placeholder that site.js
-# will populate, and that site.js contains the digits as separate string
-# literals (not as a contiguous number).
+# Every page must still render the phone SVG at runtime: each page needs a
+# <span data-phone></span> placeholder that site.js populates.
 for page in index.html consulting/index.html software/index.html; do
-    if ! grep -q 'data-phone' "$page"; then
-        echo "FAIL: $page missing data-phone placeholder"
-        exit 1
-    fi
+	if ! grep -q 'data-phone' "$page"; then
+		echo "FAIL: $page missing data-phone placeholder"
+		fail=1
+	fi
 done
 
-# site.js must exist and must not contain a contiguous phone number.
-if [[ ! -f assets/js/site.js ]]; then
-    echo "FAIL: assets/js/site.js missing"
-    exit 1
+if [ ! -f assets/js/site.js ]; then
+	echo "FAIL: assets/js/site.js missing"
+	fail=1
 fi
 
-echo "OK: phone number not leaked in static sources."
+if [ "$fail" -ne 0 ]; then
+	exit 1
+fi
+
+echo "OK: phone number not leaked in any tracked (published) file."

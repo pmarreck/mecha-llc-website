@@ -121,13 +121,13 @@ URLs: `/`, `/consulting/`, `/software/`. Trailing slashes are canonical (GitHub 
 
 **Email:** plain `mailto:peter@marreck.com?subject=Came%20from%20your%20homepage`. Obfuscation not needed — the mailto is the whole point, and the email is already public elsewhere.
 
-**Phone:** inline SVG, rendered visually as `(203) 570-4096`. Implementation:
+**Phone:** inline SVG, rendered visually as `<phone-elided>`. Implementation:
 
 - Single `<svg>` element with explicit `width`/`height` and a `viewBox`.
 - One `<text>` element containing ten `<tspan>` elements, one per digit.
 - DOM order is scrambled (e.g., `6902)3-50754(09` plus the structural characters); visual order is set by each tspan's explicit `x` attribute.
 - Digits and structural characters (`(`, `)`, `-`, spaces) are all rendered as `<tspan>` in the same SVG so the visual string is correct.
-- No `tel:` link in the source HTML. On click (or keyboard activation), JS assembles `tel:+12035704096` at runtime and `location.href = ...`. This keeps the digits out of the static HTML while giving mobile users a working tap-to-call.
+- No `tel:` link in the source HTML. On click (or keyboard activation), JS assembles `tel:<phone-elided>` at runtime and `location.href = ...`. This keeps the digits out of the static HTML while giving mobile users a working tap-to-call.
 - Cursor style `pointer` and `role="link"` / `tabindex="0"` for basic keyboard access; no aria-label with the number (that would defeat the obfuscation).
 
 Accepted trade-offs: not selectable, not copyable, not screen-reader-accessible. Email is still the default contact channel, which is screen-reader-fine.
@@ -203,8 +203,8 @@ After implementation, before declaring done:
 1. `./server.lua` then visit `/`, `/consulting/`, `/software/` in a browser. All pages render without console errors.
 2. All three app icons load. Favicon appears in the tab.
 3. Format ticker cycles on home. Scroll fade-ins fire on all three pages. Cursor-proximity edge light visible on cards (desktop only).
-4. `curl http://127.0.0.1:8080/` and pipe to `grep -E '2035704096|\(203\)|570-4096|2035704'` — must return nothing. Phone digits are not contiguous in the source.
-5. Clicking the obfuscated phone number invokes `tel:+12035704096` (test on mobile or via browser devtools).
+4. `curl http://127.0.0.1:8080/` and pipe to `grep -E '<phone-elided>|<area-elided>|<phone-elided>|<phone-elided>'` — must return nothing. Phone digits are not contiguous in the source.
+5. Clicking the obfuscated phone number invokes `tel:<phone-elided>` (test on mobile or via browser devtools).
 6. All mailto links open with the correct subject.
 7. `prefers-reduced-motion: reduce` disables transform animations.
 8. After deploy: `https://mecha.llc/`, `/consulting/`, `/software/` all serve with valid HTTPS.
