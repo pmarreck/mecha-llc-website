@@ -152,10 +152,32 @@ p { margin: 0; }
 .site-footer {
   margin-top: 56px;
   padding: 24px 0 40px;
-  font-size: 12px;
-  color: var(--fg-subtle);
   border-top: 1px solid var(--border);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 22px;
 }
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  font-size: 13px;
+}
+.footer-links a { color: var(--fg-muted); }
+.footer-links a:hover { color: var(--fg); }
+.footer-copy { color: var(--fg-subtle); font-size: 12px; margin-left: auto; }
+
+/* Legal / long-form prose pages */
+.legal { max-width: 720px; }
+.legal h1 { font-size: clamp(28px, 4vw, 38px); margin-bottom: 6px; }
+.legal .updated { color: var(--fg-subtle); font-size: 13px; margin: 0 0 32px; }
+.legal .lead { color: var(--fg); font-size: 16px; }
+.legal h2 { font-size: 18px; margin: 32px 0 8px; }
+.legal p, .legal li { color: var(--fg-muted); margin: 10px 0; }
+.legal ul { padding-left: 20px; margin: 10px 0; }
+.legal a { color: var(--accent-dim); text-decoration: underline; text-underline-offset: 2px; }
+.legal a:hover { color: var(--accent); }
 
 @media (max-width: 640px) {
   .contact-section .contact-rows { grid-template-columns: 1fr; }

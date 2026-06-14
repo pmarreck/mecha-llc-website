@@ -2,6 +2,12 @@
 ver=1.2
 annotate=[
 	PLAN.md = Mission plan/checkboxes for umbrella site build (gitignored: public repo)
+	contact/index.html = Contact page (email + obfuscated phone + company)
 	docs/MECHA_RELEASE_PLAN.md = Canonical LOCKED commercial release plan (gitignored: internal strategy, public repo)
+	legal/privacy/index.html = Privacy Policy (anonymous telemetry, Paddle payment data, no PII)
+	legal/refund/index.html = Refund policy (30-day money-back, 24-mo cooldown, Paddle-issued)
+	legal/terms/index.html = Terms of Service (Paddle MoR disclosure, NY governing law placeholder)
 	test = Master Bash test runner: runs tests/*.sh, accumulates failures, exit = fail count
+	tests/footer-consistency.sh = Set-classifier: every served HTML page links all 4 legal/contact surfaces
+	tests/policy-pages.sh = Asserts Paddle-required legal pages exist with required sections
 ]

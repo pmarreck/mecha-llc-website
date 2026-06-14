@@ -34,5 +34,9 @@ check_page() {
 check_page "/"            'High-stakes engineering'
 check_page "/consulting/" 'AI and engineering help'
 check_page "/software/"   'Tools for people who care'
+check_page "/contact/"        'Get in touch'
+check_page "/legal/terms/"    'Terms of Service'
+check_page "/legal/privacy/"  'Privacy Policy'
+check_page "/legal/refund/"   'Refund'
 
 echo "All smoke checks passed."
