@@ -10,6 +10,7 @@ annotate=[
 	test = Master Bash test runner: runs tests/*.sh, accumulates failures, exit = fail count
 	tests/footer-consistency.sh = Set-classifier: every served HTML page links all 4 legal/contact surfaces
 	tests/policy-pages.sh = Asserts Paddle-required legal pages exist with required sections
+	tests/pricing.sh = Asserts displayed prices: $49.99/app per card + $79.99 self-identified bundle
 	tests/product-naming.sh = Set-classifier: finalized product names present, retired/shelved names absent everywhere
 	tests/validate-open-core.sh = Scoped check: Validate card conveys open-core model (free CLI/lib, paid GUI, reserved rights)
 ]

@@ -529,3 +529,25 @@ p { margin: 0; }
 @media (pointer: coarse) {
   .card::before, .app-card::before { display: none; }
 }
+
+/* Product pricing + bundle */
+.app-card .price { margin-top: 8px; font-size: 14px; color: var(--fg); }
+.app-card .price strong { color: var(--accent-dim); font-weight: 650; }
+.app-card .price .free { color: var(--fg-subtle); }
+
+.bundle {
+  margin-top: 28px;
+  padding: 20px 24px;
+  border: 1px solid var(--border-strong);
+  border-radius: 12px;
+  background: var(--bg-elev);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 14px;
+}
+.bundle h3 { font-size: 16px; margin-right: 4px; }
+.bundle .price { font-size: 18px; color: var(--fg); }
+.bundle .price strong { color: var(--accent); font-weight: 650; }
+.bundle .save { color: var(--fg-subtle); font-size: 13px; }
+.bundle .terms { flex-basis: 100%; color: var(--fg-subtle); font-size: 12px; margin-top: 2px; }
