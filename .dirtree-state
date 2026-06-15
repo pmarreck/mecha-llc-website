@@ -11,4 +11,5 @@ annotate=[
 	tests/footer-consistency.sh = Set-classifier: every served HTML page links all 4 legal/contact surfaces
 	tests/policy-pages.sh = Asserts Paddle-required legal pages exist with required sections
 	tests/product-naming.sh = Set-classifier: finalized product names present, retired/shelved names absent everywhere
+	tests/validate-open-core.sh = Scoped check: Validate card conveys open-core model (free CLI/lib, paid GUI, reserved rights)
 ]
