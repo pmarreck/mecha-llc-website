@@ -25,7 +25,7 @@ has() { # has <regex> <human-desc>
 	printf '%s' "$BLOCK" | grep -qiE -- "$1" || { echo "FAIL: Validate card missing $2"; fail=1; }
 }
 
-has 'open[- ]source'        'the open-source claim'
+has 'source[- ]available'    'the source-available claim'
 has '\bCLI\b|library'       'the free CLI/library mention'
 has 'commercial'            'the commercial (paid) qualifier'
 has '\bGUI\b'               'the GUI app mention'
