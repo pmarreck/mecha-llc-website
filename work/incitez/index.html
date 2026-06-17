@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>incitez — a verified, faster alternative to eyecite — Mecha LLC</title>
-  <meta name="description" content="incitez matches eyecite — the de-facto legal-citation standard — verified, and runs ~31× faster, with better party attribution where document structure allows.">
+  <meta name="description" content="incitez matches eyecite — the de-facto legal-citation standard — verified, dramatically faster, with better party attribution where document structure allows.">
   <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
   <meta name="theme-color" content="#0f1115">
   <meta property="og:title" content="incitez — a verified, faster alternative to eyecite">
-  <meta property="og:description" content="Matches eyecite, verified, and ~31× faster. A legal-citation extraction engine from Mecha LLC.">
+  <meta property="og:description" content="Matches eyecite, verified, and dramatically faster. A legal-citation extraction engine from Mecha LLC.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://mecha.llc/work/incitez/">
   <link rel="stylesheet" href="/assets/css/site.css">
@@ -29,9 +29,10 @@
       <section class="hero reveal">
         <p class="eyebrow">Work &middot; Legal</p>
         <h1>incitez: the trusted citation<br>standard, verified &mdash; and faster.</h1>
-        <p class="subhead">eyecite is the de-facto standard for extracting legal citations (it powers CourtListener and the Caselaw Access Project). <strong>incitez matches it &mdash; verified &mdash; runs ~31&times; faster, and attributes parties more accurately where a document&rsquo;s structure is reliable.</strong> The restraint is the point: parity first, then speed, then the places we can honestly do better.</p>
+        <p class="subhead">eyecite is the de-facto standard for extracting legal citations (it powers CourtListener and the Caselaw Access Project). <strong>incitez matches it &mdash; verified &mdash; runs dramatically faster, and attributes parties more accurately where a document&rsquo;s structure is reliable.</strong> The restraint is the point: parity first, then speed, then the places we can honestly do better.</p>
         <div class="btn-row">
           <a class="btn btn-primary" href="https://incitez-web.pages.dev/?demolinks" target="_blank" rel="noopener">Try the live demo &rarr;</a>
+          <a class="btn btn-secondary" href="https://github.com/pmarreck/incitez" target="_blank" rel="noopener">Source on GitHub &rarr;</a>
           <a class="btn btn-secondary" href="/consulting/">The consulting practice</a>
         </div>
       </section>
@@ -44,8 +45,8 @@
         </div>
         <div class="stat">
           <div class="stat-eyebrow">Speed</div>
-          <div class="stat-figure">~31&times; faster</div>
-          <p>966&nbsp;ms &rarr; 31&nbsp;ms on the same brief (warm, engine-only, head-to-head against eyecite). A Zig core compiled to native + WebAssembly.</p>
+          <div class="stat-figure">Much faster</div>
+          <p>Engine-only and warm, head-to-head against eyecite on real briefs &mdash; same answers in a fraction of the time. <span class="muted">(A defensible multiple across a representative brief set is being finalized.)</span> A Zig core compiled to native + WebAssembly.</p>
         </div>
         <div class="stat">
           <div class="stat-eyebrow">Party attribution</div>
@@ -58,7 +59,7 @@
         <h2>The honest frame</h2>
         <p class="lead">incitez doesn&rsquo;t claim to beat the standard everywhere &mdash; it claims to <em>match it, verifiably</em>, and then do better only where it legitimately can.</p>
         <ul class="legal" style="max-width:760px">
-          <li><strong>Raw PDF text:</strong> citation parity with eyecite, at ~31&times; the speed. Same answers, faster.</li>
+          <li><strong>Raw PDF text:</strong> citation parity with eyecite, far faster. Same answers, less time.</li>
           <li><strong>Where structure is reliable</strong> (e.g. a <code>TABLE&nbsp;OF&nbsp;AUTHORITIES</code> with a clean party line): incitez attributes the party correctly &mdash; &ldquo;Albritton&rdquo; as plaintiff &mdash; where naive extraction bleeds the heading into the name (&ldquo;TABLE OF AUTHORITIES … Albritton&rdquo;).</li>
           <li><strong>Where structure isn&rsquo;t reliable:</strong> incitez stays at parity rather than guessing. The surpass is offered only where it holds up.</li>
         </ul>
@@ -73,7 +74,7 @@
         <div class="demo-window" aria-hidden="true">
           <div class="demo-bar"><span></span><span></span><span></span>incitez-web.pages.dev</div>
           <div class="demo-body">
-            <div class="demo-line"><span class="k">brief.pdf</span> &rarr; parsed in <span class="v">31&nbsp;ms</span></div>
+            <div class="demo-line"><span class="k">brief.pdf</span> &rarr; parsed in <span class="v">milliseconds</span></div>
             <div class="demo-line">citations found <span class="v">350</span></div>
             <div class="demo-line">parties attributed <span class="v">183</span> <span class="muted">(naive: 0)</span></div>
             <div class="demo-line">eyecite parity <span class="v">324 = 324</span> <span class="muted">· gate 215/215</span></div>
@@ -89,7 +90,7 @@
       <section class="reveal">
         <h2>Under the hood</h2>
         <p class="lead" style="max-width:760px">A pure Zig core (no I/O) &rarr; a C FFI boundary &rarr; native CLI and a WebAssembly module &mdash; the same engine in the terminal head-to-head and in the browser demo. Citation grammar and reporter data derive from the Free Law Project (reporters-db, courts-db, eyecite), used under their BSD&nbsp;2-Clause terms.</p>
-        <p class="lead" style="max-width:760px"><strong>Source availability:</strong> incitez is being released source-available under a Business Source License; the public source release is being finalized. <span class="muted">(The repository link will appear here once that lands.)</span></p>
+        <p class="lead" style="max-width:760px"><strong>Source availability:</strong> incitez is source-available under the Business Source License (BUSL-1.1) &mdash; read, build, and run the source; it converts to open source on a delay. <a href="https://github.com/pmarreck/incitez" target="_blank" rel="noopener">View the source on GitHub &rarr;</a></p>
       </section>
     </main>
 
