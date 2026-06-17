@@ -29,7 +29,7 @@
       <section class="hero reveal">
         <p class="eyebrow">Work &middot; Legal</p>
         <h1>incitez: the trusted citation<br>standard, verified &mdash; and faster.</h1>
-        <p class="subhead">eyecite is the de-facto standard for extracting legal citations (it powers CourtListener and the Caselaw Access Project). <strong>incitez matches it &mdash; verified &mdash; runs dramatically faster, and attributes parties more accurately where a document&rsquo;s structure is reliable.</strong> The restraint is the point: parity first, then speed, then the places we can honestly do better.</p>
+        <p class="subhead">eyecite is the de-facto standard for extracting legal citations (it powers CourtListener and the Caselaw Access Project). <strong>incitez matches it &mdash; verified &mdash; runs ~31&times; faster warm on a full brief (~64&times; for a typical one-shot run), and attributes parties more accurately where a document&rsquo;s structure is reliable.</strong> The restraint is the point: parity first, then speed, then the places we can honestly do better.</p>
         <div class="btn-row">
           <a class="btn btn-primary" href="https://incitez-web.pages.dev/?demolinks" target="_blank" rel="noopener">Try the live demo &rarr;</a>
           <a class="btn btn-secondary" href="https://github.com/pmarreck/incitez" target="_blank" rel="noopener">Source on GitHub &rarr;</a>
@@ -41,12 +41,12 @@
         <div class="stat">
           <div class="stat-eyebrow">Verified parity</div>
           <div class="stat-figure">324 = 324</div>
-          <p>Citation-for-citation match with eyecite on a real appellate brief, backed by a <strong>215/215 differential gate</strong> in CI. Not &ldquo;looks close&rdquo; &mdash; mechanically verified.</p>
+          <p>Citation-for-citation match with eyecite on a real appellate brief, backed by a <strong>215/215 differential gate</strong> in CI. Not &ldquo;looks close&rdquo; &mdash; mechanically verified. Cite-agreement held at 2,160 vs 2,159 across a 1.7&nbsp;MB corpus &mdash; the speed isn&rsquo;t bought with worse recall.</p>
         </div>
         <div class="stat">
           <div class="stat-eyebrow">Speed</div>
-          <div class="stat-figure">Much faster</div>
-          <p>Engine-only and warm, head-to-head against eyecite on real briefs &mdash; same answers in a fraction of the time. <span class="muted">(A defensible multiple across a representative brief set is being finalized.)</span> A Zig core compiled to native + WebAssembly.</p>
+          <div class="stat-figure">~64&times; faster</div>
+          <p>A typical one-shot run of a ~90-page appellate brief: incitez ~30&nbsp;ms vs eyecite re-paying ~170&nbsp;ms of Python/model startup every time. Warm and engine-only it&rsquo;s ~31&times; (31.6&nbsp;ms vs 987&nbsp;ms); the margin grows with brief size and citation density.</p>
         </div>
         <div class="stat">
           <div class="stat-eyebrow">Party attribution</div>
@@ -59,7 +59,7 @@
         <h2>The honest frame</h2>
         <p class="lead">incitez doesn&rsquo;t claim to beat the standard everywhere &mdash; it claims to <em>match it, verifiably</em>, and then do better only where it legitimately can.</p>
         <ul class="legal" style="max-width:760px">
-          <li><strong>Raw PDF text:</strong> citation parity with eyecite, far faster. Same answers, less time.</li>
+          <li><strong>Raw PDF text:</strong> the same citations eyecite finds &mdash; ~31&times; faster warm on a full brief, ~64&times; for a one-shot run.</li>
           <li><strong>Where structure is reliable</strong> (e.g. a <code>TABLE&nbsp;OF&nbsp;AUTHORITIES</code> with a clean party line): incitez attributes the party correctly &mdash; &ldquo;Albritton&rdquo; as plaintiff &mdash; where naive extraction bleeds the heading into the name (&ldquo;TABLE OF AUTHORITIES … Albritton&rdquo;).</li>
           <li><strong>Where structure isn&rsquo;t reliable:</strong> incitez stays at parity rather than guessing. The surpass is offered only where it holds up.</li>
         </ul>
@@ -74,7 +74,7 @@
         <div class="demo-window" aria-hidden="true">
           <div class="demo-bar"><span></span><span></span><span></span>incitez-web.pages.dev</div>
           <div class="demo-body">
-            <div class="demo-line"><span class="k">brief.pdf</span> &rarr; parsed in <span class="v">milliseconds</span></div>
+            <div class="demo-line"><span class="k">brief.pdf</span> &rarr; parsed in <span class="v">~30&nbsp;ms</span> <span class="muted">(eyecite ~987&nbsp;ms)</span></div>
             <div class="demo-line">citations found <span class="v">350</span></div>
             <div class="demo-line">parties attributed <span class="v">183</span> <span class="muted">(naive: 0)</span></div>
             <div class="demo-line">eyecite parity <span class="v">324 = 324</span> <span class="muted">· gate 215/215</span></div>
