@@ -551,3 +551,29 @@ p { margin: 0; }
 .bundle .price strong { color: var(--accent); font-weight: 650; }
 .bundle .save { color: var(--fg-subtle); font-size: 13px; }
 .bundle .terms { flex-basis: 100%; color: var(--fg-subtle); font-size: 12px; margin-top: 2px; }
+
+/* Work / case-study pages */
+.work h2 { margin-top: 44px; font-size: 20px; }
+.lead { color: var(--fg); font-size: 16px; }
+
+.stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 28px; }
+.stat { border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px; background: var(--bg-elev); }
+.stat-eyebrow { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-subtle); }
+.stat-figure { font-size: 30px; font-weight: 650; letter-spacing: -0.02em; color: var(--accent); margin: 6px 0 8px; }
+.stat p { color: var(--fg-muted); font-size: 14px; }
+
+.demo-card { display: grid; grid-template-columns: 1.25fr 1fr; gap: 24px; align-items: center; margin-top: 40px; }
+.demo-window { border: 1px solid var(--border-strong); border-radius: 12px; overflow: hidden; background: #0b0d12; font-family: var(--font-mono); font-size: 13px; }
+.demo-bar { display: flex; align-items: center; gap: 6px; padding: 8px 12px; background: #10141c; color: var(--fg-subtle); border-bottom: 1px solid var(--border); font-family: var(--font-sans); font-size: 12px; }
+.demo-bar span { width: 10px; height: 10px; border-radius: 50%; background: #2a3340; }
+.demo-bar span:nth-child(1) { background: #e06c75; }
+.demo-bar span:nth-child(2) { background: #e5c07b; }
+.demo-bar span:nth-child(3) { background: #98c379; margin-right: 8px; }
+.demo-body { padding: 16px 18px; display: flex; flex-direction: column; gap: 8px; }
+.demo-line { color: var(--fg-muted); }
+.demo-line .k { color: var(--fg); }
+.demo-line .v { color: var(--accent); font-weight: 600; }
+.muted { color: var(--fg-subtle); }
+.demo-aside h3 { font-size: 18px; margin-bottom: 8px; }
+.demo-aside p { color: var(--fg-muted); margin-bottom: 14px; }
+@media (max-width: 680px) { .demo-card { grid-template-columns: 1fr; } }

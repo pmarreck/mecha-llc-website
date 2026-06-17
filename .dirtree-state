@@ -13,4 +13,7 @@ annotate=[
 	tests/pricing.sh = Asserts displayed prices: $49.99/app per card + $79.99 self-identified bundle
 	tests/product-naming.sh = Set-classifier: finalized product names present, retired/shelved names absent everywhere
 	tests/validate-open-core.sh = Scoped check: Validate card conveys open-core model (free CLI/lib, paid GUI, reserved rights)
+	tests/work-incitez.sh = Asserts incitez showcase content + honest framing + demo link + repo-link gate (no GitHub link until BSL)
+	work/incitez/index.html = incitez case study: verified-parity-first vs eyecite, ~31x, demo CTA; repo link gated on BSL
+	work/index.html = /work/ index (case-study listing)
 ]

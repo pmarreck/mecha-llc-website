@@ -38,5 +38,7 @@ check_page "/contact/"        'Get in touch'
 check_page "/legal/terms/"    'Terms of Service'
 check_page "/legal/privacy/"  'Privacy Policy'
 check_page "/legal/refund/"   'Refund'
+check_page "/work/"            'Selected work'
+check_page "/work/incitez/"    'incitez'
 
 echo "All smoke checks passed."
