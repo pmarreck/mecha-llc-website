@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>MFIC — trusting AI output enough to put your name on it — Mecha LLC</title>
+  <meta name="description" content="MFIC (Mechanically-Falsifiable Independent Control): the assurance discipline behind trustworthy AI output — independent controls at every handoff, the internal-control model behind Sarbanes-Oxley, with the LLM as the new untrusted party.">
+  <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
+  <meta name="theme-color" content="#0f1115">
+  <meta property="og:title" content="MFIC — trusting AI output enough to put your name on it">
+  <meta property="og:description" content="The assurance discipline behind trustworthy AI output — independent controls at every handoff, the discipline behind Sarbanes-Oxley.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://mecha.llc/thoughts/mfic/">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <script defer src="/assets/js/site.js"></script>
+</head>
+<body>
+  <div class="page">
+    <nav class="site-nav">
+      <a href="/" class="brand">MECHA · LLC</a>
+      <div class="links">
+        <a href="/consulting/">Consulting</a>
+        <a href="/software/">Software</a>
+        <a href="/contact/">Contact</a>
+      </div>
+    </nav>
+
+    <main class="work">
+      <section class="hero reveal">
+        <p class="eyebrow">Thoughts · Methodology</p>
+        <h1>Trusting AI output enough<br>to put your name on it.</h1>
+        <p class="subhead"><strong>MFIC — Mechanically-Falsifiable Independent Control</strong> is a discipline for exactly that: independent checks at every handoff that derive their verdict from the contract or the data, never from the producer&rsquo;s say-so, and hold the authority to reject or halt. It is the internal-control model behind <strong>Sarbanes-Oxley</strong> (COSO) — segregation of duties, preventive and detective controls, audit trails, reasonable assurance — with the LLM (or a hurried human) as the new untrusted party.</p>
+        <p class="subhead">For regulated, high-stakes work, that is the difference between &ldquo;the AI said so&rdquo; and an answer you can defend under audit. It&rsquo;s the discipline behind everything Mecha builds — and the reason a verification result here comes with a gate, not a promise.</p>
+      </section>
+
+      <section class="legal reveal mfic-body">
+<p>How to trust code or data a fallible author — an LLM, or a hurried
+human — could quietly corrupt. TDD's red phase gives only
+<strong>F</strong> (a test <em>can</em> fire); MFIC adds the other
+three. It's the COSO / Sarbanes-Oxley internal-control model, with the
+LLM as the new untrusted party.</p>
+<p><strong>Definition:</strong> an independent check at a <em>handoff
+boundary</em> that derives its verdict from the contract or the data —
+never from the producer's account of it — and holds the authority to
+reject, halt, or steer.</p>
+<p><strong>Litmus:</strong> <em>if the same agent wrote both the check
+and the thing checked, could it pass with wrong work?</em> Yes →
+gameable, not MFIC. No → MFIC.</p>
+<p><strong>Each word is load-bearing:</strong></p>
+<ul>
+<li><strong>Mechanically</strong> — cases machine-swept, not
+hand-picked. ¬M → omission bugs.</li>
+<li><strong>Falsifiable</strong> — each case a biting refutation you
+can't pre-arrange. ¬F → vacuous green tests, or weak oracles ("doesn't
+crash" hiding wrong output).</li>
+<li><strong>Independent</strong> — truth source causally independent of
+the producer (≡ <strong>segregation of duties</strong>: maker ≠
+checker). ¬I → collusive tests sharing one blind spot; the axis TDD
+leaves open.</li>
+<li><strong>Control</strong> — a baseline <strong>plus</strong>
+authority to fail or steer. ¬C → telemetry that observes but never
+blocks.</li>
+</ul>
+<p><strong>Two regimes:</strong></p>
+<ul>
+<li><strong>Static</strong> (verify the code, in CI) — exhaustion,
+differential, metamorphic, input-mutation, property-based, perf/leak
+gates. <em>Detective.</em></li>
+<li><strong>Dynamic</strong> (verify state in flight, in prod) —
+stage-boundary contracts, schema/invariant preservation,
+reject-to-previous loops. <em>Preventive</em> +
+<em>corrective</em>.</li>
+</ul>
+<p><strong>Reach for the strongest, cheapest first:</strong> finite
+domain → exhaust it; inverse → round-trip
+<code>decode(encode(x))==x</code>; reference → differential;
+transform-invariant → metamorphic; can corrupt known-good input →
+input-mutation (a <em>coverage number</em>, not a bool); else →
+property-based + shrink. <strong>Prefer the oracle the author didn't
+write</strong> — oracle-free beats an authored "expected value" that
+could itself be wrong.</p>
+<p><strong>Input-mutation, specifically:</strong> flip each bit/byte of
+a known-valid input and assert the verifier now <em>rejects</em> it; the
+fraction detected measures how much of the format it actually constrains
+— turning "I validate the whole format" into a number nobody can
+hallucinate past. Keep it honest: pair with a <strong>specificity
+corpus</strong> (all valid inputs must pass, else a reject-everything
+checker scores 100%), and score only <strong>must-detect</strong>
+regions (padding / CRC-excluded bytes are legitimate don't-cares).</p>
+<p><strong>Guardrails:</strong> ordinary validation usually fails
+<strong>I</strong> (one agent defines the schema <em>and</em> produces
+against it) or <strong>C</strong> (it only logs). A warn-only monitor is
+M-F-I but <strong>¬C</strong> — telemetry, not a gate; a check that
+<em>fails the build</em> is full MFIC. <strong>Evidence is
+constitutive</strong> — a control with no trail didn't run; version its
+measurement history by commit + hardware. Statistical members give
+<em>reasonable assurance</em>, not proof — the recognized standard, not
+a deficiency.</p>
+<p><strong>Prior art:</strong> mutation, metamorphic, differential,
+property-based testing, fault injection (software V&amp;V); segregation
+of duties, preventive/detective/corrective controls, audit trail, test
+of controls, reasonable assurance (COSO / Sarbanes-Oxley).</p>
+      </section>
+
+      <section class="reveal">
+        <p class="lead" style="max-width:760px">This is the working summary. The full technical treatment — the independence axis in depth, the producer/approver pattern, the escalation from policy to blocking gates to cryptographic controls, and five worked examples — lives in the <a href="https://gist.github.com/pmarreck/b30aa3ca69cb70a5526f8a63ab8c8d7e" target="_blank" rel="noopener">complete MFIC methodology</a>.</p>
+        <div class="btn-row" style="margin-top:18px">
+          <a class="btn btn-primary" href="/work/incitez/">See it in practice: incitez &rarr;</a>
+          <a class="btn btn-secondary" href="/consulting/">The consulting practice &rarr;</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <nav class="footer-links" aria-label="Legal and contact">
+        <a href="/legal/terms/">Terms</a>
+        <a href="/legal/privacy/">Privacy</a>
+        <a href="/legal/refund/">Refunds</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+      <p class="footer-copy">&copy; Mecha,&nbsp;LLC &middot; downloadable data-integrity software for macOS &amp; Windows.</p>
+    </footer>
+  </div>
+</body>
+</html>

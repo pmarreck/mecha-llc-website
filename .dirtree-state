@@ -7,13 +7,18 @@ annotate=[
 	legal/privacy/index.html = Privacy Policy (anonymous telemetry, Paddle payment data, no PII)
 	legal/refund/index.html = Refund policy (30-day money-back, 24-mo cooldown, Paddle-issued)
 	legal/terms/index.html = Terms of Service (Paddle MoR disclosure, NY governing law placeholder)
+	scripts/render-mfic = Generates /thoughts/mfic/ from canonical ~/Documents/MFIC.md (pandoc, gfm); no-drift single source
 	test = Master Bash test runner: runs tests/*.sh, accumulates failures, exit = fail count
 	tests/footer-consistency.sh = Set-classifier: every served HTML page links all 4 legal/contact surfaces
+	tests/mfic-no-drift.sh = Drift gate: re-renders MFIC page from source, fails if committed HTML stale (skips if source absent)
 	tests/policy-pages.sh = Asserts Paddle-required legal pages exist with required sections
 	tests/pricing.sh = Asserts displayed prices: $49.99/app per card + $79.99 self-identified bundle
 	tests/product-naming.sh = Set-classifier: finalized product names present, retired/shelved names absent everywhere
+	tests/thoughts-mfic.sh = Asserts MFIC page buyer-framing + core + gist link + cross-links
 	tests/validate-open-core.sh = Scoped check: Validate card conveys open-core model (free CLI/lib, paid GUI, reserved rights)
 	tests/work-incitez.sh = Asserts incitez showcase content + honest framing + demo link + repo-link gate (no GitHub link until BSL)
+	thoughts/index.html = /thoughts/ index (thought-leadership; seeds future essays)
+	thoughts/mfic/index.html = MFIC methodology page (buyer-framed; core rendered from ~/Documents/MFIC.md via pandoc; gist for deep dive)
 	work/incitez/index.html = incitez case study: verified-parity-first vs eyecite, ~31x, demo CTA; repo link gated on BSL
 	work/index.html = /work/ index (case-study listing)
 ]

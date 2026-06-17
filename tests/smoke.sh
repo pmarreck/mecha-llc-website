@@ -40,5 +40,7 @@ check_page "/legal/privacy/"  'Privacy Policy'
 check_page "/legal/refund/"   'Refund'
 check_page "/work/"            'Selected work'
 check_page "/work/incitez/"    'incitez'
+check_page "/thoughts/"        'Thoughts'
+check_page "/thoughts/mfic/"   'Sarbanes-Oxley'
 
 echo "All smoke checks passed."
