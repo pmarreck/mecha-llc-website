@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+# Validate every shipped executable/module and the required static entrypoints.
+set -u
+cd "$(dirname "$0")"
+
+failures=0
+mapfile -t modules < <(rg --files assets/js -g '*.js' -g '*.mjs' | sort)
+for module in "${modules[@]}"; do
+	if ! node --check "$module" >/dev/null 2>&1; then
+		echo "syntax check failed: $module" >&2
+		failures=$((failures + 1))
+	fi
+done
+
+if ! luajit -e 'assert(loadfile("server.lua"))' >/dev/null 2>&1; then
+	echo 'syntax check failed: server.lua' >&2
+	failures=$((failures + 1))
+fi
+
+for entrypoint in index.html software/index.html legal/terms/index.html legal/privacy/index.html legal/refund/index.html; do
+	if [ ! -s "$entrypoint" ]; then
+		echo "required static entrypoint missing or empty: $entrypoint" >&2
+		failures=$((failures + 1))
+	fi
+done
+
+if [ "$failures" -eq 0 ]; then
+	echo "All ${#modules[@]} JavaScript module(s), Lua preview server, and required static entrypoints passed."
+fi
+exit "$failures"

@@ -13,6 +13,7 @@
   <meta property="og:url" content="https://mecha.llc/software/">
   <link rel="stylesheet" href="/assets/css/site.css">
   <script defer src="/assets/js/site.js"></script>
+  <script type="module" src="/assets/js/checkout.mjs"></script>
 </head>
 <body>
   <div class="page">
@@ -40,10 +41,23 @@
               <h3>Mecha Validate</h3>
               <span class="pill">Coming soon</span>
             </div>
-            <p class="description">The first tool to validate the byte-level binary structure of every common file format (240+) and many less-common ones. Only made possible with AI assistance.</p>
+            <p class="description">Mecha Validate examines files with format-aware checks and reports how deeply each format was inspected. Before checkout opens, this page will publish a versioned capability matrix distinguishing strict validation, partial validation, structural-only checks, unsupported formats, and measured corruption-detection evidence.</p>
             <p class="description">The command-line tool and library are <strong>source-available</strong> under a Business Source License — read the code, build it, and run it yourself. The commercial <strong>GUI app</strong> is the paid product, with graphical and commercial-frontend rights reserved to Mecha,&nbsp;LLC. Like other source-available projects, it’s slated to convert to a fully open-source license over time.</p>
             <div class="status">Source-available CLI &amp; library &middot; commercial GUI coming</div>
             <div class="price">Commercial GUI app <strong>$49.99</strong> &middot; <span class="free">CLI &amp; library free</span></div>
+            <div class="checkout-actions">
+              <button
+                class="btn btn-primary"
+                type="button"
+                data-checkout-product="validate"
+                data-enabled-label="Buy Mecha Validate — $49.99"
+                aria-describedby="validate-checkout-status"
+                aria-disabled="true"
+                disabled>Checkout not yet available — $49.99</button>
+              <p id="validate-checkout-status" class="checkout-status" role="status" aria-live="polite">Checkout is not live. No payment can be taken.</p>
+              <noscript><p class="checkout-status">Checkout requires JavaScript and remains unavailable. No payment can be taken.</p></noscript>
+              <p class="checkout-legal">Future purchases will be processed by Paddle and governed by our <a href="/legal/terms/">Terms</a>, <a href="/legal/privacy/">Privacy Policy</a>, and <a href="/legal/refund/">Refund Policy</a>. When launch gates pass, Paddle will send the receipt; the Mecha license email and verified download instructions will follow separately.</p>
+            </div>
           </div>
           <a class="repo-link" href="https://github.com/pmarreck/validate" target="_blank" rel="noopener">GitHub &UpperRightArrow;</a>
         </article>
@@ -67,7 +81,7 @@
         <h3>Bundle</h3>
         <p class="price">Mecha Validate + Mecha RotShield <strong>$79.99</strong></p>
         <span class="save">Save ~20% vs. $49.99 each</span>
-        <p class="terms">Every app includes a 30-day free trial and a 30-day money-back guarantee. Downloadable software for macOS and Windows; payments handled by Paddle.</p>
+        <p class="terms">Published policies currently describe a 30-day free trial and a 30-day money-back guarantee. Checkout stays disabled until the trial, license, supported-platform, download, and Paddle fulfillment behavior all match those policies.</p>
       </section>
     </main>
 

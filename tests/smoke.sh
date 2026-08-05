@@ -43,4 +43,14 @@ check_page "/work/incitez/"    'incitez'
 check_page "/thoughts/"        'Thoughts'
 check_page "/thoughts/mfic/"   'Sarbanes-Oxley'
 
+headers="$(curl -sfD - -o /dev/null "http://127.0.0.1:$PORT/assets/js/checkout.mjs")" || {
+    echo 'FAIL: checkout module returned non-200'
+    exit 1
+}
+if ! grep -qi '^Content-Type: application/javascript; charset=utf-8' <<<"$headers"; then
+    echo 'FAIL: checkout.mjs is not served with JavaScript MIME type'
+    exit 1
+fi
+echo 'OK: checkout.mjs JavaScript MIME type'
+
 echo "All smoke checks passed."

@@ -1,5 +1,7 @@
 # Mecha LLC Website
 
+[![Mechatron Prime CI](https://img.shields.io/endpoint?url=https%3A%2F%2Fthelio-nixos.tail66c90.ts.net%2Fbadges%2Fmecha-llc-website.json&style=for-the-badge)](https://thelio-nixos.tail66c90.ts.net/mechatron-prime/)
+
 Static site for [mecha.llc](https://mecha.llc), served by GitHub Pages from this repo.
 
 ## Local preview
@@ -10,6 +12,17 @@ PORT=8000 ./server.lua # override
 ```
 
 Requires LuaJIT with `luasocket` and `luafilesystem`.
+
+```
+./build                # syntax and required-entrypoint checks
+./test                 # complete static, policy, checkout, and preview suite
+```
+
+The Paddle checkout source is deliberately disabled. `assets/js/checkout-config.mjs`
+must contain one complete public client-token/price set and a verified Validate
+capability-matrix commit before the adapter can load Paddle.js or enable a button.
+See `docs/checkout.md` for the configuration classifier, no-JavaScript behavior,
+fulfillment boundary, and official Paddle references.
 
 ## Structure
 

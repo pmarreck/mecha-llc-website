@@ -49,7 +49,13 @@ grep -qiE 'one-shot|single run|cold' "$PAGE" || note "$PAGE missing the cold/one
 
 # Allowlist gate over ALL pages: no multiplier outside APPROVED_MULTIPLIERS.
 in_allowlist() { local n="$1" a; for a in "${APPROVED_MULTIPLIERS[@]}"; do [ "$n" = "$a" ] && return 0; done; return 1; }
-if command -v jj >/dev/null 2>&1 && [ -d .jj ]; then mapfile -t PAGES < <(jj file list | grep -E '\.html$'); else mapfile -t PAGES < <(git ls-files '*.html'); fi
+if command -v jj >/dev/null 2>&1 && [ -d .jj ]; then
+	mapfile -t PAGES < <(jj file list | grep -E '\.html$')
+elif git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+	mapfile -t PAGES < <(git ls-files '*.html')
+else
+	mapfile -t PAGES < <(rg --files -g '*.html')
+fi
 for p in "${PAGES[@]}"; do
 	[ -f "$p" ] || continue
 	while IFS= read -r tok; do

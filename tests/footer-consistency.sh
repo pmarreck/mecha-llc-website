@@ -15,8 +15,10 @@ cd "$ROOT"
 # Population = every tracked .html file (tracked ⇒ served by Pages).
 if command -v jj >/dev/null 2>&1 && [ -d .jj ]; then
 	mapfile -t PAGES < <(jj file list | grep -E '\.html$')
-else
+elif git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
 	mapfile -t PAGES < <(git ls-files '*.html')
+else
+	mapfile -t PAGES < <(rg --files -g '*.html')
 fi
 
 REQUIRED_LINKS=(

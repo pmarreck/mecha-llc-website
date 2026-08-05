@@ -258,21 +258,24 @@
      3. Scroll fade-ins
      ------------------------------------------------- */
   function initFadeIns() {
+    const elements = document.querySelectorAll('.reveal');
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      // Show everything immediately; no transform animations.
-      document.querySelectorAll('.reveal').forEach((el) => el.classList.add('in-view'));
+      // Content starts visible; no transform animations are added.
       return;
     }
 
     if (!('IntersectionObserver' in window)) {
-      document.querySelectorAll('.reveal').forEach((el) => el.classList.add('in-view'));
+      // Content starts visible when the observer feature is unavailable.
       return;
     }
+
+    elements.forEach((el) => el.classList.add('reveal-pending'));
 
     const io = new IntersectionObserver((entries) => {
       for (const entry of entries) {
         if (entry.isIntersecting) {
           entry.target.classList.add('in-view');
+          entry.target.classList.remove('reveal-pending');
           io.unobserve(entry.target);
         }
       }
@@ -281,7 +284,7 @@
       rootMargin: '0px 0px -10% 0px',
     });
 
-    document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+    elements.forEach((el) => io.observe(el));
   }
 
   if (document.readyState === 'loading') {

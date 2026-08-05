@@ -19,8 +19,10 @@ cd "$ROOT"
 
 if command -v jj >/dev/null 2>&1 && [ -d .jj ]; then
 	mapfile -t FILES < <(jj file list | grep -E '\.(html|css|js|svg|md|txt|json)$')
+elif git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+	mapfile -t FILES < <(git ls-files '*.html' '*.css' '*.js' '*.mjs' '*.svg' '*.md' '*.txt' '*.json')
 else
-	mapfile -t FILES < <(git ls-files '*.html' '*.css' '*.js' '*.svg' '*.md' '*.txt' '*.json')
+	mapfile -t FILES < <(rg --files -g '*.html' -g '*.css' -g '*.js' -g '*.mjs' -g '*.svg' -g '*.md' -g '*.txt' -g '*.json')
 fi
 
 # Mojibake fingerprint: (Â|â|Ã) + (C2|C3)-led continuation.

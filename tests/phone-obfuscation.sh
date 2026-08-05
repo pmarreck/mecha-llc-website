@@ -36,8 +36,10 @@ PATTERNS=(
 # to git ls-files for environments without jj (e.g. a bare CI checkout).
 if command -v jj >/dev/null 2>&1 && [ -d .jj ]; then
 	FILES="$(jj file list)"
-else
+elif git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
 	FILES="$(git ls-files)"
+else
+	FILES="$(rg --files)"
 fi
 
 fail=0
