@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#0f1115"/>
+  <path d="M850 0V630M950 0V630M1050 0V630M1150 0V630M800 100H1200M800 200H1200M800 300H1200M800 400H1200M800 500H1200" stroke="#1f2833" stroke-width="2"/>
+  <rect x="64" y="64" width="72" height="6" rx="3" fill="#3b82f6"/>
+  <text x="64" y="140" fill="#9fb1c5" font-family="DejaVu Sans" font-size="24" letter-spacing="5">SOFTWARE + ENGINEERING</text>
+  <text x="58" y="268" fill="#eaeaea" font-family="DejaVu Sans" font-weight="bold" font-size="110" letter-spacing="-4">MECHA</text>
+  <text x="64" y="340" fill="#eaeaea" font-family="DejaVu Sans" font-size="38">Built around correctness.</text>
+  <text x="64" y="394" fill="#9fb1c5" font-family="DejaVu Sans" font-size="26">Verify files. Protect data. Play movies.</text>
+  <path d="M1010 155L1106 210V320L1010 375L914 320V210Z" fill="#141e30" stroke="#3b82f6" stroke-width="4"/>
+  <path d="M965 266L997 298L1062 228" fill="none" stroke="#77b4ff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M64 472H1136" stroke="#2a3340" stroke-width="2"/>
+  <text x="64" y="526" fill="#eaeaea" font-family="DejaVu Sans" font-size="24">BeamFlix · Validate · RotShield</text>
+  <text x="1136" y="526" text-anchor="end" fill="#77b4ff" font-family="DejaVu Sans" font-size="26">mecha.llc</text>
+  <text x="64" y="570" fill="#9fb1c5" font-family="DejaVu Sans" font-size="20">Independent software. Consulting for high-stakes work.</text>
+</svg>
