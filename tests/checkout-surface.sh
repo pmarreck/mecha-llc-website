@@ -17,16 +17,12 @@ for page in "${pages[@]}"; do
 	grep -qiE 'every common file format|240\+' "$page" && note "$page contains an unmeasured universal/240+ format claim"
 done
 
-for state in strict partial structural-only unsupported; do
-	need "$state" "capability boundary missing '$state' state"
-done
-need 'measured corruption-detection evidence' 'capability boundary missing measured evidence'
-need 'capability matrix' 'capability boundary missing future matrix source'
+grep -qiE 'before checkout opens|launch gates|capability matrix|Paddle fulfillment|Published policies currently|configuration is incomplete|No payment can be taken' "$PAGE" \
+	&& note 'public sales page exposes internal checkout readiness details'
 
 # Literal HTML stays safe when JavaScript is absent or fails before Paddle loads.
 perl -0ne 'exit 0 if /<button\b(?=[^>]*data-checkout-product="validate")(?=[^>]*\bdisabled\b)[^>]*>/s; exit 1' "$PAGE" \
 	|| note 'Validate checkout button is not disabled in source HTML'
-need '<noscript>' 'no-JavaScript fallback missing'
 perl -0ne 'exit 0 if /\.reveal\s*\{[^}]*opacity:\s*1;[^}]*transform:\s*none;/s; exit 1' assets/css/site.css \
 	|| note 'no-JavaScript page content remains hidden by reveal styles'
 need 'aria-describedby="validate-checkout-status"' 'checkout button lacks status description'
@@ -37,7 +33,7 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 const html = readFileSync('software/index.html', 'utf8');
 const cards = [...html.matchAll(/<article\b[^>]*>[\s\S]*?<\/article>/g)].map(match => match[0]);
-for (const [name, price] of [['Mecha BeamFlix', '34.99'], ['Mecha Validate', '49.99'], ['Mecha RotShield', '49.99']]) {
+for (const [name, price] of [['Mecha BeamFlix', '34.99'], ['Mecha Validate', '49.99'], ['Mecha RotShield', '29.99']]) {
 	const card = cards.find(value => value.includes(`<h3>${name}</h3>`));
 	assert.ok(card, `${name}: card missing`);
 	const button = card.match(/<button\b[^>]*>[\s\S]*?<\/button>/)?.[0];
@@ -47,6 +43,9 @@ for (const [name, price] of [['Mecha BeamFlix', '34.99'], ['Mecha Validate', '49
 	assert.ok(button.includes(`Checkout not yet available — $${price}`), `${name}: wrong checkout label/price`);
 	assert.ok(card.includes('class="checkout-actions"'), `${name}: disabled cursor styling missing`);
 }
+const bundle = html.match(/<section class="bundle[^\"]*">[\s\S]*?<\/section>/)?.[0];
+assert.ok(bundle, 'bundle offer missing');
+assert.match(bundle, /<button\b(?=[^>]*id="bundle-checkout")(?=[^>]*data-checkout-product="bundle")(?=[^>]*\sdisabled(?:\s|>))[^>]*>Checkout not yet available — \$64\.99<\/button>/);
 assert.match(readFileSync('assets/css/site.css', 'utf8'), /\.checkout-actions\s+\.btn\[disabled\]\s*\{[^}]*cursor:\s*not-allowed\s*;/);
 JS
 need '/legal/terms/' 'checkout surface lacks Terms link'

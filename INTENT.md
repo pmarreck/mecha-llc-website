@@ -20,6 +20,11 @@ Mecha Validate is currently closed-source commercial software. License
 requirements include its graphical app, command-line tools and validation core;
 do not advertise a free CLI/library or public source access.
 
+Advertised prices are $34.99 for BeamFlix, $49.99 for Validate, $29.99 for
+RotShield and $64.99 for the Validate + RotShield bundle. The bundle has its own
+checkout product identity. Customer-facing pages communicate availability
+without describing internal release gates, configuration or deployment work.
+
 Keep private operational details and credentials out of this public repository.
 Preserve disabled checkout until its configuration and fulfillment requirements
 are satisfied. Success means readable desktop/mobile pages, accessible product

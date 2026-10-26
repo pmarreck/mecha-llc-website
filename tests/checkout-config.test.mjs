@@ -71,6 +71,11 @@ const enabledSandbox = {
 	eq(disabledResult.state, 'disabled', 'disabled mount remains disabled');
 	eq(loaderCalls, 0, 'disabled mount does not request Paddle.js');
 	eq(disabledSurface.button.disabled, true, 'disabled mount cannot accept a click');
+	eq(disabledSurface.status.textContent, '', 'disabled checkout adds no internal explanation to the sales page');
+	const invalidSurface = makeSurface();
+	await mountCheckout(invalidSurface.documentObject, {}, async () => { loaderCalls++; }, { ...disabled, environment: 'invalid' });
+	eq(invalidSurface.status.textContent, 'Checkout is currently unavailable.', 'invalid configuration uses customer-facing language');
+	eq(loaderCalls, 0, 'invalid configuration also avoids loading Paddle');
 
 	const enabledSurface = makeSurface();
 	const paddleCalls = { environment: [], initialize: [], opened: [] };
@@ -104,6 +109,9 @@ const enabledSandbox = {
 	const intent = checkoutIntent(enabledSandbox, 'validate');
 	eq(intent.items.length, 1, 'checkout intent has one line item');
 	eq(intent.items[0].priceId, enabledSandbox.prices.validate, 'checkout intent uses configured public price ID');
+	const bundleIntent = checkoutIntent(enabledSandbox, 'bundle');
+	eq(bundleIntent.items[0].priceId, enabledSandbox.prices.bundle, 'bundle has its own configured purchase intent');
+	ok(bundleIntent.items[0].priceId !== intent.items[0].priceId, 'bundle does not dispatch the individual Validate product');
 	eq(intent.items[0].quantity, 1, 'checkout intent uses quantity one');
 	ok(!JSON.stringify(intent).includes(enabledSandbox.clientToken), 'checkout intent does not carry the client token');
 }
@@ -114,8 +122,8 @@ const enabledSandbox = {
 	const cases = [
 		['checkout.completed', false, 'Payment received. Paddle will email your receipt; Mecha license delivery follows separately.'],
 		['checkout.closed', false, 'Checkout closed. No purchase was completed; you can reopen it.'],
-		['checkout.error', false, 'Checkout did not complete. No license was issued by this page; you can reopen it.'],
-		['checkout.payment.failed', false, 'Checkout did not complete. No license was issued by this page; you can reopen it.'],
+		['checkout.error', false, 'Checkout did not complete. Please try again.'],
+		['checkout.payment.failed', false, 'Checkout did not complete. Please try again.'],
 		['checkout.closed', true, 'Payment received. Paddle will email your receipt; Mecha license delivery follows separately.'],
 	];
 	for (const [name, completed, expected] of cases) {

@@ -61,7 +61,7 @@ export function checkoutStatusForEvent(event, completedAlready = false) {
 	}
 	if (event?.name === 'checkout.closed') return 'Checkout closed. No purchase was completed; you can reopen it.';
 	if (event?.name === 'checkout.error' || event?.name === 'checkout.payment.failed') {
-		return 'Checkout did not complete. No license was issued by this page; you can reopen it.';
+		return 'Checkout did not complete. Please try again.';
 	}
 	return null;
 }
@@ -84,8 +84,8 @@ export async function mountCheckout(documentObject, windowObject, paddleLoader =
 	const classification = classifyCheckoutConfig(config);
 	if (classification.state !== 'enabled') {
 		if (status) status.textContent = classification.state === 'disabled'
-			? 'Checkout is not live. No payment can be taken.'
-			: 'Checkout configuration is incomplete. No payment can be taken.';
+			? ''
+			: 'Checkout is currently unavailable.';
 		return classification;
 	}
 
@@ -94,7 +94,7 @@ export async function mountCheckout(documentObject, windowObject, paddleLoader =
 		paddle = await paddleLoader(documentObject, windowObject);
 		if (!paddle?.Initialize || !paddle?.Checkout?.open) throw new Error('checkout_library_unavailable');
 	} catch {
-		if (status) status.textContent = 'Checkout could not load. No payment can be taken; please try again later.';
+		if (status) status.textContent = 'Checkout is temporarily unavailable. Please try again later.';
 		return { state: 'unavailable', reason: 'library_load_failed' };
 	}
 
@@ -110,7 +110,7 @@ export async function mountCheckout(documentObject, windowObject, paddleLoader =
 			},
 		});
 	} catch {
-		if (status) status.textContent = 'Checkout could not initialize. No payment can be taken; please try again later.';
+		if (status) status.textContent = 'Checkout is temporarily unavailable. Please try again later.';
 		return { state: 'unavailable', reason: 'initialization_failed' };
 	}
 
