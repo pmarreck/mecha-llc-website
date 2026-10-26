@@ -20,6 +20,7 @@ annotate=[
 	docs/checkout.md = Public checkout configuration, fulfillment boundary, and Paddle references
 	docs/i18n-review-samples.md = Locale samples with English meaning reconstructions and snapshot hashes
 	docs/i18n-review.md = Independent translation review findings and limits
+	docs/localized-slogans.md = Localized headline idioms, intended meanings and tone review
 	flake.nix = Reproducible static-site package, full test check, and LuaJIT/Node development shell
 	i18n = Source-keyed catalogs for all supported website languages
 	legal/privacy/index.html = Privacy Policy (anonymous telemetry, Paddle payment data, no PII)

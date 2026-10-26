@@ -7,6 +7,18 @@ import {runtimeText} from '../assets/js/messages.mjs';
 import {readFileSync} from 'node:fs';
 import {runtimeStrings} from '../scripts/runtime-strings.mjs';
 import {translationNotice} from '../scripts/translation-policy.mjs';
+import {tooltipOffset} from '../assets/js/tooltips.mjs';
+
+test('tooltip positions fit either viewport edge without moving already-fitting labels', () => {
+	assert.equal(tooltipOffset(20,200,390),0);
+	assert.equal(tooltipOffset(220,200,390),-38);
+	assert.equal(tooltipOffset(-100,200,390),108);
+	for(const viewport of [320,390,1280]) for(const left of [-200,0,25,viewport-10]) {
+		const width=200,offset=tooltipOffset(left,width,viewport);
+		assert(left+offset>=8);
+		assert(left+offset+width<=viewport-8);
+	}
+});
 
 test('translation notices classify every supported locale by reviewed uncertainty', () => {
 	const flagged=locales.filter(l=>translationNotice(l.code,'software/index.html').machine).map(l=>l.code);
@@ -122,8 +134,15 @@ test('catalog guards preserve product identity and numeric claims', () => {
 	assert.throws(()=>validateCatalog({x:'Mecha Validate costs $49.99.'},{x:'Mecha Validate costs $29.99.'}),/numbers/);
 	assert.throws(()=>validateCatalog({x:'Mecha Validate'},{x:'Mecha Valider'}),/brand/);
 });
+test('German uses the approved SEK wordplay and GSD is localizable, unlike product names', () => {
+	const catalog=JSON.parse(readFileSync(new URL('../i18n/de.json',import.meta.url)));
+	assert.match(catalog.s_21fceb06142db16f,/<button[^>]*>SEK<\/button>/);
+	assert.match(catalog.s_21fceb06142db16f,/role="tooltip">Scheiß erledigt kriegen, natürlich\.<\/span>/);
+	assert.doesNotThrow(()=>validateCatalog({x:'Tools for GSD.'},{x:'Werkzeuge für SEK.'}));
+	assert.throws(()=>validateCatalog({x:'Mecha Validate'},{x:'Mecha SEK'}),/brand/);
+});
 test('reviewed visible headings do not disappear into the hidden GSD definition', () => {
-	for(const [code,expected] of [['ja','GSDのためのツール。'],['ko','GSD를 위한 도구.']]) {
+	for(const [code,expected] of [['ja','さっさと片付けるためのツール。'],['ko','일을 해치우는 도구.'],['fr','Des outils pour abattre du boulot.']]) {
 		const catalog=JSON.parse(readFileSync(new URL(`../i18n/${code}.json`,import.meta.url)));
 		const heading=catalog.s_21fceb06142db16f.split('<br>')[0]
 			.replace(/<span class="term-tooltip"[^>]*>[\s\S]*?<\/span>/,'')
@@ -132,6 +151,6 @@ test('reviewed visible headings do not disappear into the hidden GSD definition'
 	}
 	for(const {code} of locales) {
 		const catalog=JSON.parse(readFileSync(new URL(`../i18n/${code}.json`,import.meta.url)));
-		assert.match(catalog.s_21fceb06142db16f,/<button[^>]*>GSD<\/button>/,code);
+		assert.match(catalog.s_21fceb06142db16f,/<button[^>]*>[^<>]+<\/button>/,code);
 	}
 });

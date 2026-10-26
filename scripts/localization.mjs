@@ -82,7 +82,8 @@ export function validateCatalog(source, catalog) {
 		// grouping/decimal conventions can be introduced as a separate formatter.
 		const numbers = s => (s.replace(/<[^>]*>/g,' ').match(/\d+(?:[.,]\d+)*/g) ?? []).sort();
 		if (JSON.stringify(numbers(value)) !== JSON.stringify(numbers(source[key]))) throw new Error(`Catalog numbers changed: ${key}`);
-		const brands=s=>(s.replace(/<[^>]*>/g,' ').match(/\b(?:Mecha|BeamFlix|Validate|RotShield|Paddle|GSD|MFIC|incitez|eyecite)\b/g)??[]).sort();
+		// GSD is an adaptable slogan, not a product name (German: SEK).
+		const brands=s=>(s.replace(/<[^>]*>/g,' ').match(/\b(?:Mecha|BeamFlix|Validate|RotShield|Paddle|MFIC|incitez|eyecite)\b/g)??[]).sort();
 		if (JSON.stringify(brands(value))!==JSON.stringify(brands(source[key]))) throw new Error(`Catalog brand changed: ${key}`);
 	}
 }
