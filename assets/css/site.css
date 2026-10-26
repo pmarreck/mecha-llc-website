@@ -439,6 +439,11 @@ p { margin: 0; }
     overflow: visible;
   }
   .software-page .hero .eyebrow { grid-column: 1 / -1; }
+  /* The tooltip can overflow, but the decorative glow must stay below navigation. */
+  .software-page .hero::before {
+    inset: 0;
+    mask-image: linear-gradient(to bottom, transparent, #000 25%, #000 75%, transparent);
+  }
   .software-page .hero h1 { font-size: clamp(26px, 2.5vw, 34px); }
   .software-page .hero .subhead { margin-top: 0; align-self: center; }
   .software-page .app-list {
