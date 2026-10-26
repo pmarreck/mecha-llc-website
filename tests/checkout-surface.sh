@@ -32,6 +32,23 @@ perl -0ne 'exit 0 if /\.reveal\s*\{[^}]*opacity:\s*1;[^}]*transform:\s*none;/s; 
 need 'aria-describedby="validate-checkout-status"' 'checkout button lacks status description'
 need 'id="validate-checkout-status"[^>]+role="status"[^>]+aria-live="polite"' 'checkout status is not an accessible live region'
 need '\$49\.99' 'Validate CTA does not show the approved price'
+node --input-type=module <<'JS' || note 'an app checkout placeholder is missing or unsafe'
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+const html = readFileSync('software/index.html', 'utf8');
+const cards = [...html.matchAll(/<article\b[^>]*>[\s\S]*?<\/article>/g)].map(match => match[0]);
+for (const [name, price] of [['Mecha BeamFlix', '34.99'], ['Mecha Validate', '49.99'], ['Mecha RotShield', '49.99']]) {
+	const card = cards.find(value => value.includes(`<h3>${name}</h3>`));
+	assert.ok(card, `${name}: card missing`);
+	const button = card.match(/<button\b[^>]*>[\s\S]*?<\/button>/)?.[0];
+	assert.ok(button, `${name}: checkout button missing`);
+	assert.match(button, /\sdisabled(?:\s|>)/, `${name}: must be natively disabled`);
+	assert.match(button, /aria-disabled="true"/, `${name}: disabled state missing`);
+	assert.ok(button.includes(`Checkout not yet available — $${price}`), `${name}: wrong checkout label/price`);
+	assert.ok(card.includes('class="checkout-actions"'), `${name}: disabled cursor styling missing`);
+}
+assert.match(readFileSync('assets/css/site.css', 'utf8'), /\.checkout-actions\s+\.btn\[disabled\]\s*\{[^}]*cursor:\s*not-allowed\s*;/);
+JS
 need '/legal/terms/' 'checkout surface lacks Terms link'
 need '/legal/privacy/' 'checkout surface lacks Privacy link'
 need '/legal/refund/' 'checkout surface lacks Refund link'
