@@ -12,17 +12,18 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://mecha.llc/software/">
   <meta property="og:site_name" content="Mecha LLC">
-  <meta property="og:image" content="https://mecha.llc/assets/img/social-preview-v1.png">
+  <meta property="og:image" content="https://mecha.llc/assets/img/social-preview-v2.png">
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Mecha: built around correctness. BeamFlix, Validate, and RotShield.">
+  <meta property="og:image:alt" content="Mecha: Tools for GSD correctly. BeamFlix, Validate, and RotShield.">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://mecha.llc/assets/img/social-preview-v1.png">
-  <meta name="twitter:image:alt" content="Mecha: built around correctness. BeamFlix, Validate, and RotShield.">
+  <meta name="twitter:image" content="https://mecha.llc/assets/img/social-preview-v2.png">
+  <meta name="twitter:image:alt" content="Mecha: Tools for GSD correctly. BeamFlix, Validate, and RotShield.">
   <link rel="stylesheet" href="/assets/css/site.css">
   <script defer src="/assets/js/site.js"></script>
   <script type="module" src="/assets/js/checkout.mjs"></script>
+  <script type="module" src="/assets/js/tooltips.mjs"></script>
 </head>
 <body>
   <div class="page">
@@ -38,8 +39,7 @@
     <main>
       <section class="hero reveal">
         <p class="eyebrow">Mecha apps</p>
-        <h1>Tools for people who care<br>about their bytes.</h1>
-        <p class="subhead">Three focused apps in active development. Verify your files, protect them against corruption, and bring your local movie collection to the big screen.</p>
+        <h1>Tools for <span class="tooltip-anchor"><button class="term-trigger" type="button" aria-describedby="gsd-definition">GSD</button><span class="term-tooltip" id="gsd-definition" role="tooltip">Getting stuff done, of course.</span></span>.<br>Validation.<br>Bitrot prevention.<br>Streaming video to your devices.</h1>
         <p class="subhead">Every app is planned for <strong>Windows, macOS, and Linux</strong>, with both <strong>AMD64 (x86-64) and ARM64</strong> builds on each OS: six platform builds per app, plus <strong>50 language translations</strong>. These are release targets; current development builds may cover fewer platforms and languages.</p>
       </section>
 

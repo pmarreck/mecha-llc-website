@@ -35,3 +35,6 @@ for (const page of pages) {
 	assert(png.length < 1024 * 1024, `${page}: preview image exceeds 1 MiB`);
 }
 console.log(`Social previews verified for ${pages.length} pages.`);
+const artwork=readFileSync('assets/img/social-preview-v2.svg','utf8');
+assert(artwork.includes('>Tools for GSD correctly.</text>'));
+assert(!artwork.includes('Built around correctness.'));

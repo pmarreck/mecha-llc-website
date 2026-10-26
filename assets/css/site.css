@@ -21,6 +21,27 @@
   --page-pad: clamp(20px, 4vw, 56px);
 }
 
+/* Language controls use native option names and remain usable on small screens. */
+.site-nav { flex-wrap: wrap; gap: 16px; }
+.language-picker { display: flex; align-items: center; gap: 8px; font-size: 13px; }
+.language-picker select { max-width: 180px; min-height: 38px; padding: 6px 10px; color: var(--fg); background: var(--bg-elev); border: 1px solid var(--border-strong); border-radius: 8px; font: inherit; }
+.language-picker select:focus-visible, .term-trigger:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.translation-notice { margin-block: 16px; color: var(--fg-muted); font-size: 13px; }
+.tooltip-anchor { position: relative; display: inline-block; }
+.term-trigger { font: inherit; color: inherit; cursor: help; background: none; border: 0; padding: 0; text-decoration: underline dotted var(--fg-muted); text-underline-offset: 0.15em; }
+.term-tooltip { visibility: hidden; position: absolute; inset-inline-start: 0; inset-block-start: 100%; width: max-content; max-width: min(280px, 75vw); padding: 10px 14px; border: 1px solid var(--border-strong); border-radius: 8px; background: var(--bg-elev); color: var(--fg); font-size: 15px; font-weight: 400; line-height: 1.5; letter-spacing: normal; z-index: 10; }
+.tooltip-anchor:not(.tooltip-dismissed):hover .term-tooltip,
+.tooltip-anchor:not(.tooltip-dismissed):focus-within .term-tooltip,
+.tooltip-open .term-tooltip { visibility: visible; }
+html[dir="rtl"] .footer-copy { margin-left: 0; margin-inline-start: auto; }
+html[dir="rtl"] .legal ul { padding-left: 0; padding-inline-start: 20px; }
+html[dir="rtl"] .bundle h3 { margin-right: 0; margin-inline-end: 4px; }
+html[dir="rtl"] .price, html[dir="rtl"] [data-phone] { direction: ltr; unicode-bidi: isolate; }
+@media (max-width: 640px) {
+	.language-picker { width: 100%; justify-content: flex-end; }
+	.language-picker select { max-width: 65%; }
+}
+
 * { box-sizing: border-box; }
 
 html, body {
@@ -312,7 +333,7 @@ p { margin: 0; }
 .engagement-blurb {
   margin-top: 36px;
   padding: 18px;
-  border-left: 2px solid var(--accent);
+  border-inline-start: 2px solid var(--accent);
   background: rgba(59, 130, 246, 0.05);
   font-size: 13px;
   color: var(--fg-muted);
