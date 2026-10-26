@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Asserts the displayed product pricing (Paddle gate #2). Real numbers, Peter-
-# approved 2026-06-14: $49.99 per app, $79.99 for the two-app bundle. Prices are
+# Asserts the approved displayed product pricing (Paddle gate #2): Validate and
+# RotShield $49.99 each, their two-app bundle $79.99, and BeamFlix $34.99. Prices are
 # checked per-card (scoped) plus a bundle element; the bundle must name itself so
 # a reviewer sees what the discounted SKU is.
 set -u
@@ -23,6 +23,9 @@ printf '%s' "$VAL" | grep -qF '$49.99' || { echo "FAIL: Mecha Validate card miss
 ROT="$(card 'Mecha RotShield')"
 printf '%s' "$ROT" | grep -qF '$49.99' || { echo "FAIL: Mecha RotShield card missing \$49.99 price"; fail=1; }
 
+BEAM="$(card 'Mecha BeamFlix')"
+printf '%s' "$BEAM" | grep -qF '$34.99' || { echo "FAIL: Mecha BeamFlix card missing \$34.99 price"; fail=1; }
+
 # Bundle element: must show $79.99 AND identify itself as a bundle.
 grep -qF '$79.99' "$PAGE"      || { echo "FAIL: no \$79.99 bundle price on page"; fail=1; }
 grep -qiE 'bundle' "$PAGE"     || { echo "FAIL: no self-identifying bundle element"; fail=1; }
@@ -30,4 +33,4 @@ grep -qiE 'bundle' "$PAGE"     || { echo "FAIL: no self-identifying bundle eleme
 if [ "$fail" -ne 0 ]; then
 	exit 1
 fi
-echo "OK: product prices (\$49.99 each) and bundle (\$79.99) displayed."
+echo "OK: Validate/RotShield (\$49.99 each), BeamFlix (\$34.99), and two-app bundle (\$79.99) displayed."

@@ -2,7 +2,9 @@
 ver=1.2
 annotate=[
 	. = Mecha LLC marketing site. PUBLIC repo; GitHub Pages serves mecha.llc from branch yolo. Business/strategy docs belong in ~/Code/mecha_business (Obsidian vault), NOT here.
+	INTENT.md = Public website purpose, product catalog boundaries and release-claim requirements
 	PLAN.md = Mission plan/checkboxes for umbrella site build (gitignored: public repo)
+	assets/img/beamflix.png = Mecha BeamFlix projector icon supplied by the application project
 	assets/js/checkout-config.mjs = Public disabled-by-default Paddle client token, price, and capability-matrix configuration
 	assets/js/checkout.mjs = Pure checkout classifier plus accessible fail-closed Paddle.js browser adapter
 	build = Checks shipped JavaScript, Lua preview syntax, and required static entrypoints
