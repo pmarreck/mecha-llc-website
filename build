@@ -4,6 +4,9 @@ set -u
 cd "$(dirname "$0")"
 
 failures=0
+if ! node scripts/localize.mjs --check; then
+	failures=$((failures + 1))
+fi
 mapfile -t modules < <(rg --files assets/js -g '*.js' -g '*.mjs' | sort)
 for module in "${modules[@]}"; do
 	if ! node --check "$module" >/dev/null 2>&1; then

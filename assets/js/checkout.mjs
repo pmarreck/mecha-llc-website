@@ -1,4 +1,5 @@
 import checkoutConfig from './checkout-config.mjs';
+import {runtimeText} from './messages.mjs';
 
 const REQUIRED_PRODUCTS = Object.freeze(['validate', 'rotshield', 'bundle']);
 const PADDLE_SCRIPT_URL = 'https://cdn.paddle.com/paddle/v2/paddle.js';
@@ -78,6 +79,7 @@ const loadPaddle = (documentObject, windowObject) => new Promise((resolve, rejec
 });
 
 export async function mountCheckout(documentObject, windowObject, paddleLoader = loadPaddle, config = checkoutConfig) {
+	const text=(english,error=false)=>runtimeText(windowObject,english,error);
 	const buttons = [...documentObject.querySelectorAll('[data-checkout-product]')];
 	if (buttons.length === 0) return { state: 'absent' };
 	const status = documentObject.getElementById('validate-checkout-status');
@@ -85,7 +87,7 @@ export async function mountCheckout(documentObject, windowObject, paddleLoader =
 	if (classification.state !== 'enabled') {
 		if (status) status.textContent = classification.state === 'disabled'
 			? ''
-			: 'Checkout is currently unavailable.';
+			: text('Checkout is currently unavailable.',true);
 		return classification;
 	}
 
@@ -94,7 +96,7 @@ export async function mountCheckout(documentObject, windowObject, paddleLoader =
 		paddle = await paddleLoader(documentObject, windowObject);
 		if (!paddle?.Initialize || !paddle?.Checkout?.open) throw new Error('checkout_library_unavailable');
 	} catch {
-		if (status) status.textContent = 'Checkout is temporarily unavailable. Please try again later.';
+		if (status) status.textContent = text('Checkout is temporarily unavailable. Please try again later.',true);
 		return { state: 'unavailable', reason: 'library_load_failed' };
 	}
 
@@ -106,11 +108,11 @@ export async function mountCheckout(documentObject, windowObject, paddleLoader =
 			eventCallback(event) {
 				if (event?.name === 'checkout.completed') completed = true;
 				const message = checkoutStatusForEvent(event, completed);
-				if (message && status) status.textContent = message;
+				if (message && status) status.textContent = text(message,event?.name==='checkout.error' || event?.name==='checkout.payment.failed');
 			},
 		});
 	} catch {
-		if (status) status.textContent = 'Checkout is temporarily unavailable. Please try again later.';
+		if (status) status.textContent = text('Checkout is temporarily unavailable. Please try again later.',true);
 		return { state: 'unavailable', reason: 'initialization_failed' };
 	}
 
@@ -121,14 +123,14 @@ export async function mountCheckout(documentObject, windowObject, paddleLoader =
 		button.textContent = button.dataset.enabledLabel;
 		button.addEventListener('click', () => {
 			completed = false;
-			if (status) status.textContent = 'Opening secure Paddle checkout…';
+			if (status) status.textContent = text('Opening secure Paddle checkout…');
 			paddle.Checkout.open({
 				...checkoutIntent(config, product),
 				settings: { displayMode: 'overlay', theme: 'dark' },
 			});
 		});
 	}
-	if (status) status.textContent = 'Secure checkout is ready.';
+	if (status) status.textContent = text('Secure checkout is ready.');
 	return classification;
 }
 

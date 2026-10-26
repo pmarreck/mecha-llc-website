@@ -33,8 +33,13 @@ checked=0
 for page in "${PAGES[@]}"; do
 	[ -f "$page" ] || continue
 	checked=$((checked + 1))
+	prefix=''
+	if [[ "$page" == l/* ]]; then
+		locale_path="${page#l/}"
+		prefix="/l/${locale_path%%/*}"
+	fi
 	for link in "${REQUIRED_LINKS[@]}"; do
-		if ! grep -qF "href=\"$link\"" "$page"; then
+		if ! grep -qF "href=\"${prefix}$link\"" "$page"; then
 			echo "FAIL: $page footer missing link to $link"
 			fail=1
 		fi

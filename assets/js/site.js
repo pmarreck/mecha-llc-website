@@ -223,7 +223,7 @@
 
     let idx = 0;
     currentEl.textContent = '.' + formats[0].ext;
-    catEl.textContent = formats[0].cat;
+    catEl.textContent = window.mechaMessages?.[formats[0].cat] ?? formats[0].cat;
 
     function cycle() {
       const nextIdx = (idx + 1) % formats.length;
@@ -236,7 +236,7 @@
         track.style.transition = 'none';
         track.style.transform = 'translateY(0)';
         currentEl.textContent = '.' + formats[nextIdx].ext;
-        catEl.textContent = formats[nextIdx].cat;
+        catEl.textContent = window.mechaMessages?.[formats[nextIdx].cat] ?? formats[nextIdx].cat;
         // Force reflow, then restore transition
         void track.offsetWidth;
         track.style.transition = '';

@@ -26,6 +26,9 @@ checkout product identity. Customer-facing pages communicate availability
 without describing internal release gates, configuration or deployment work.
 
 Keep private operational details and credentials out of this public repository.
+The website itself supports 50 languages, a language picker and browser-language
+defaults, including right-to-left layouts. See [localization](docs/I18N.md) for
+selection rules, translation provenance and review limitations.
 Preserve disabled checkout until its configuration and fulfillment requirements
 are satisfied. Success means readable desktop/mobile pages, accessible product
 names and icons, working links and assets, and passing site checks.

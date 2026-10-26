@@ -30,7 +30,7 @@
 					'';
 					installPhase = ''
 						mkdir -p "$out/share/mecha-llc-website"
-						cp -R CNAME index.html assets consulting contact legal software thoughts work "$out/share/mecha-llc-website/"
+						cp -R CNAME index.html assets consulting contact legal software thoughts work l "$out/share/mecha-llc-website/"
 					'';
 				};
 			});
