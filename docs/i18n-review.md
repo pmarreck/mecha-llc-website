@@ -2,7 +2,7 @@
 
 Review date: 2026-10-26. Status: **machine translations; native review pending**.
 
-The website's owner approved publishing labeled machine translations across the canonical 50-language set. This record does not certify native fluency, legal equivalence, or the accuracy of every sentence. Structural checks and sampled language review answer different questions.
+The website's owner approved publishing machine translations across the canonical 50-language set, then restricted visible notices to locales with unresolved confidence concerns: Amharic, Hausa, Igbo, Pashto and Yoruba. Other locales display normally. This record does not certify native fluency, legal equivalence, or the accuracy of every sentence. Structural checks and sampled language review answer different questions.
 
 ## Production and independent review
 

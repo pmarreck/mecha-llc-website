@@ -1,11 +1,32 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {locales, normalizeLocale, chooseLocale, localizedPath, splitLocalePath} from '../assets/js/locale.mjs';
-import {extract, render, validateCatalog} from '../scripts/localization.mjs';
+import {extract, render, validateCatalog, pages} from '../scripts/localization.mjs';
 import {initializeLanguage} from '../assets/js/i18n.mjs';
 import {runtimeText} from '../assets/js/messages.mjs';
 import {readFileSync} from 'node:fs';
 import {runtimeStrings} from '../scripts/runtime-strings.mjs';
+import {translationNotice} from '../scripts/translation-policy.mjs';
+
+test('translation notices classify every supported locale by reviewed uncertainty', () => {
+	const flagged=locales.filter(l=>translationNotice(l.code,'software/index.html').machine).map(l=>l.code);
+	assert.deepEqual(flagged,['am','ha','ig','ps','yo']);
+	for(const {code} of locales) {
+		assert.equal(translationNotice(code,'software/index.html').englishPolicy,false);
+		assert.equal(translationNotice(code,'legal/terms/index.html').englishPolicy,code!=='en');
+	}
+	assert.throws(()=>translationNotice('unknown','index.html'),/Unsupported/);
+});
+test('published pages show only the selected notices and preserve legal source links', () => {
+	const flagged=new Set(['am','ha','ig','ps','yo']);
+	for(const {code} of locales) for(const page of pages) {
+		const html=readFileSync(new URL(`../l/${code}/${page}`,import.meta.url),'utf8');
+		const aside=html.match(/<aside class="translation-notice">([\s\S]*?)<\/aside>/)?.[1]??'';
+		assert.equal(aside.includes(`href="/l/${code}/contact/"`),flagged.has(code),`${code}/${page}`);
+		const englishLink=`href="/l/en/${page.replace(/index\.html$/,'')}"`;
+		assert.equal(aside.includes(englishLink),code!=='en' && page.startsWith('legal/'),`${code}/${page}`);
+	}
+});
 
 test('canonical 50 languages, regional matching and explicit script precedence', () => {
 	assert.equal(locales.length, 50);

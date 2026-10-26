@@ -4,6 +4,7 @@ import {fileURLToPath} from 'node:url';
 import {pages,extract,keyFor,render,validateCatalog,escapeAttribute} from './localization.mjs';
 import {locales,localizedPath} from '../assets/js/locale.mjs';
 import {runtimeStrings} from './runtime-strings.mjs';
+import {translationNotice} from './translation-policy.mjs';
 
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
 const sources=Object.fromEntries(pages.map(p=>[p,readFileSync(resolve(root,p),'utf8')]));
@@ -33,12 +34,13 @@ if (mode==='--extract') {
 		for (const [page,source] of Object.entries(sources)) {
 			let output=render(source,page,locale.code,catalog)
 				.replace('/assets/i18n/en.js',`/assets/i18n/${locale.code}.js`);
-			if (locale.code!=='en') {
-				const policy=page.startsWith('legal/');
+			const disclosure=translationNotice(locale.code,page);
+			if (disclosure.machine || disclosure.englishPolicy) {
 				const machineLabel=escapeAttribute(catalog[keyFor('Machine translation. Corrections are welcome.')]);
-				const policyLink=policy?` <a href="/l/en/${page.replace(/index\.html$/,'')}">${escapeAttribute(catalog[keyFor('Translation of the English policy. Read the English original.')])}</a>`:'';
-				const notice=`<aside class="translation-notice"><a href="${localizedPath('/contact/',locale.code)}">${machineLabel}</a>${policyLink}</aside>`;
-				output=output.replace('<main>',`<main>\n${notice}`);
+				const machineLink=disclosure.machine?`<a href="${localizedPath('/contact/',locale.code)}">${machineLabel}</a>`:'';
+				const policyLink=disclosure.englishPolicy?`<a href="/l/en/${page.replace(/index\.html$/,'')}">${escapeAttribute(catalog[keyFor('Translation of the English policy. Read the English original.')])}</a>`:'';
+				const notice=`<aside class="translation-notice">${[machineLink,policyLink].filter(Boolean).join(' ')}</aside>`;
+				output=output.replace(/<main\b[^>]*>/,opening=>`${opening}\n${notice}`);
 			}
 			emit(`l/${locale.code}/${page}`,output);
 		}

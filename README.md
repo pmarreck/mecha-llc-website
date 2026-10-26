@@ -7,7 +7,7 @@ Static site for [mecha.llc](https://mecha.llc), served by GitHub Pages from this
 The site has 50 language editions, a native-name language picker, browser-language
 defaults, and right-to-left layouts. Explicit language links preserve the selected
 language; the picker remembers a choice when browser storage permits it.
-Translations are labeled machine drafts pending native review. See
+Machine-translation notices appear only for locales with unresolved confidence concerns. See
 [the localization guide](docs/I18N.md) for catalog editing, generation and checks.
 
 ## Local preview

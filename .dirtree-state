@@ -28,6 +28,7 @@ annotate=[
 	scripts/localization.mjs = Pure static HTML phrase extraction and localized page rendering
 	scripts/localize.mjs = Explicit generation and read-only verification of 50 static language editions
 	scripts/render-mfic = Generates /thoughts/mfic/ from canonical ~/Documents/MFIC.md (pandoc, gfm); no-drift single source
+	scripts/translation-policy.mjs = Reviewed locale-specific notice policy and legal source links
 	test = Master Bash test runner: runs tests/*.sh, accumulates failures, exit = fail count
 	tests/encoding-integrity.sh = Set-classifier: no double/triple-encoded UTF-8 (mojibake) in any tracked text file
 	tests/footer-consistency.sh = Set-classifier: every served HTML page links all 4 legal/contact surfaces
