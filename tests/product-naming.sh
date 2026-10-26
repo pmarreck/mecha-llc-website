@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Set-classifier over served HTML: enforce the FINALIZED product brand names
 # and prove the RETIRED/SHELVED names appear NOWHERE published. Finalized
-# (2026-06-14, Peter): "Mecha Validate", "Mecha RotShield". Mecha Archiver is
+# "Mecha Validate", "Mecha RotShield", "Mecha BeamFlix". Mecha Archiver is
 # SHELVED (market overlap w/ PowerArchiver + bit-exact DEFLATE re-emission is
 # intractable), so its app names must not appear as live products.
 #
@@ -31,6 +31,7 @@ RETIRED=(
 FINALIZED=(
 	'Mecha Validate'
 	'Mecha RotShield'
+	'Mecha BeamFlix'
 )
 
 fail=0
