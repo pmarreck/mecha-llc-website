@@ -11,6 +11,11 @@ builds from products available for purchase or download. Product pricing,
 release readiness and licensing require confirmed product decisions; adding a
 catalog entry does not establish those terms.
 
+The release target for every app is six platform builds: Windows, macOS and
+Linux, each on AMD64 (x86-64) and ARM64, plus 50 language translations. Present
+this as planned release support until the actual builds and translations are
+qualified; do not imply all six are already available for download.
+
 Keep private operational details and credentials out of this public repository.
 Preserve disabled checkout until its configuration and fulfillment requirements
 are satisfied. Success means readable desktop/mobile pages, accessible product
