@@ -1,68 +1,86 @@
-# Localized slogan review
+# Compact localized slogans
 
-Date: 2026-10-26. Status: independent, source-aware model review; native review pending.
+Reviewed: 2026-10-26. The visible label is an abbreviation or compact native form;
+the tooltip supplies the fuller meaning. A full multiword idiom as the button
+label misses this intended reveal. English GSD and the owner-approved German SEK
+remain unchanged. Both Chinese editions use 搞定.
 
-All 48 generated candidates were reviewed (50 supported locales minus unchanged English and owner-approved German). The German wording is explicitly approved: label **SEK**, tooltip **Scheiß erledigt kriegen, natürlich.** That approval does not certify the other languages.
+Initialisms may be coined for this site. They are not represented as conventional
+abbreviations in their languages. Native-script shortcuts need not imitate Latin
+initials. Connect the heading grammatically around the expanded idea, and keep
+the tone mildly cheeky rather than shocking. The German tooltip is explicitly
+approved by a fluent speaker; that approval does not certify other locales.
 
-The intended tone is lightly cheeky rather than shocking. The review favors ordinary local phrases over invented acronyms, avoids insults and unwarranted claims of perfection, and makes no claims about the preferences of entire cultures. Several languages use a direct phrase rather than a joke where confidence in stronger wordplay is limited.
+The revised candidates received separate, source-aware AI review of initials,
+expansions, grammar and tone. This is not native-speaker certification. Existing
+selective notices remain only for Amharic, Hausa, Igbo, Pashto and Yoruba, per
+the publication policy in RULES.md. Other locales display normally.
 
-The generator was Gemini; a separate agent reviewed the combined visible heading and tooltip. This was not blinded or native-speaker validation. The reviewed corrections were applied to the catalogs. The table records the selected wording and its intended meaning.
+## Reviewed labels and reveal text
 
-| Locale | Reviewed label | Intended heading meaning | Notes |
+| Locale | Compact label | Tooltip | Form |
 |---|---|---|---|
-| am | ሥራን ለመጨረስ | Tools for finishing work | Provisional; native grammar/idiom review needed. |
-| ar | تنجز الشغل | Tools that get the work done | No clear grammar, meaning or tone defect found after the recorded corrections; not native-certified. |
-| az | İş bitirən | Tools that finish the job | No clear grammar, meaning or tone defect found after the recorded corrections; not native-certified. |
-| bg | вършат работа | Tools that do the job | No clear grammar, meaning or tone defect found after the recorded corrections; not native-certified. |
-| bn | কাজ সারার | Your tools for wrapping up work | No clear grammar, meaning or tone defect found after the recorded corrections; not native-certified. |
-| bs | posao bude gotov | Tools so the job gets finished | No clear grammar, meaning or tone defect found after the recorded corrections; not native-certified. |
-| da | få det gjort | Tools to get it done | No clear grammar, meaning or tone defect found after the recorded corrections; not native-certified. |
-| el | να γίνεται δουλειά | Tools to get work done | No clear grammar, meaning or tone defect found after the recorded corrections; not native-certified. |
-| es | al lío | Tools to get down to it | Colloquial Spanish “get down to it”; especially familiar in Spain. |
-| fa | ردیف کردن کارها | Tools for getting things sorted | No clear grammar, meaning or tone defect found after the recorded corrections; not native-certified. |
-| fi | hommiin | Tools for getting down to work | No clear grammar, meaning or tone defect found after the recorded corrections; not native-certified. |
-| fil | may matapos | Tools so something gets finished | No clear grammar, meaning or tone defect found after the recorded corrections; not native-certified. |
-| fr | abattre du boulot | Tools for knocking out work | No clear grammar, meaning or tone defect found after the recorded corrections; not native-certified. |
-| ha | kammala aiki | Tools for completing work | Provisional; simple work-completion phrase chosen over malformed finite clause. |
-| he | לתקתק עניינים | Tools for ticking things off / sorting things out | No clear grammar, meaning or tone defect found after the recorded corrections; not native-certified. |
-| hi | काम निपटाने | Tools for wrapping up work | No clear grammar, meaning or tone defect found after the recorded corrections; not native-certified. |
-| hr | odrađuju posao | Tools that do the job | No clear grammar, meaning or tone defect found after the recorded corrections; not native-certified. |
-| hu | elintézd a dolgokat | Tools to take care of things | No clear grammar, meaning or tone defect found after the recorded corrections; not native-certified. |
-| id | beresin kerjaan | Tools for getting the work sorted | No clear grammar, meaning or tone defect found after the recorded corrections; not native-certified. |
-| ig | Maka Ịrụ Ọrụ | Tools for doing work | Provisional; grammatical idiom and tooltip nuance need native review. |
-| is | klára dæmið | Tools to wrap it up | Moved tooltip to the actual idiom, not the words “tools to”; avoided “junk” wording. |
-| it | al sodo | Tools to get to the point and get a result | No clear grammar, meaning or tone defect found after the recorded corrections; not native-certified. |
-| ja | さっさと片付ける | Tools to get on with it and finish things | Removed ungrounded blazing-speed/perfection promise; current idiom has mild impatience. |
-| km | ធ្វើការ | Tools for doing work | Plain rather than edgy; native idiom review would improve confidence. |
-| ko | 일을 해치우는 | Tools for getting the work out of the way | No clear grammar, meaning or tone defect found after the recorded corrections; not native-certified. |
-| mk | ја вршат работата | Tools that get the job done | No clear grammar, meaning or tone defect found after the recorded corrections; not native-certified. |
-| nb | få ting gjort | Tools to get things done | No clear grammar, meaning or tone defect found after the recorded corrections; not native-certified. |
-| nl | aanpakkers | Tools for people who get stuck in and do things | Idiomatic people-who-take-action label; original lacked a grammatical object. |
-| pa | ਕੰਮ ਨਿਬੇੜਨ | Tools for wrapping up work | No clear grammar, meaning or tone defect found after the recorded corrections; not native-certified. |
-| pl | do roboty | Tools for getting to work | No clear grammar, meaning or tone defect found after the recorded corrections; not native-certified. |
-| ps | د کار وسایل | Tools for work | Provisional; straightforward work-tools phrase, not edgy wordplay. |
-| pt_br | pra fazer acontecer | Tools to make things happen | No clear grammar, meaning or tone defect found after the recorded corrections; not native-certified. |
-| ro | treabă făcută | Tools for a job done | Removed fabricated TDD acronym, which also collided with test-driven development. |
-| ru | чтобы дело делалось | Tools so work gets done | No clear grammar, meaning or tone defect found after the recorded corrections; not native-certified. |
-| sl | za delo | Tools for work | No clear grammar, meaning or tone defect found after the recorded corrections; not native-certified. |
-| sq | ta kryer punën | Tools for finishing the job | Removed fabricated PBD and malformed profanity. |
-| sr | посао буде готов | Tools so the job gets finished | Uses Cyrillic per the requested script convention. |
-| sv | få det gjort | Tools to get it done | No clear grammar, meaning or tone defect found after the recorded corrections; not native-certified. |
-| sw | kumaliza kazi | Tools for finishing work | No clear grammar, meaning or tone defect found after the recorded corrections; not native-certified. |
-| ta | வேலையை முடிக்க | Tools to help finish work | Corrected sentence linkage; modest idiom, native fluency review remains useful. |
-| th | ลุยงาน | Tools to dive into the work | No clear grammar, meaning or tone defect found after the recorded corrections; not native-certified. |
-| tr | İş bitiren | Tools that get the job done | No clear grammar, meaning or tone defect found after the recorded corrections; not native-certified. |
-| uk | щоб діло йшло | Tools to keep the work moving | No clear grammar, meaning or tone defect found after the recorded corrections; not native-certified. |
-| ur | کام نپٹانے | Tools for wrapping up work | No clear grammar, meaning or tone defect found after the recorded corrections; not native-certified. |
-| vi | xử gọn công việc | Tools to get the work neatly handled | No clear grammar, meaning or tone defect found after the recorded corrections; not native-certified. |
-| yo | Ṣiṣe | Tools for doing things | Provisional; diacritics and idiom need native review. |
-| zh_hans | 搞定神器 | Your get-it-done wonder tool | Playful “wonder tool” metaphor; puffery, not a literal guarantee. |
-| zh_hant | 搞定事情 | Tools to help you get things done | No clear grammar, meaning or tone defect found after the recorded corrections; not native-certified. |
+| am | ጨርስ | ሥራውን ጨርስ፣ በእርግጥ። | shortcut |
+| ar | إنجاز | إنجاز الشغل، طبعًا. | shortcut |
+| az | İB | İş bitirmək, əlbəttə. | initialism |
+| bg | СР | Свършена работа, разбира се. | initialism |
+| bn | সারো | কাজ সেরে ফেলার জন্য, অবশ্যই! | shortcut |
+| bs | ZP | Završavanje posla, naravno. | initialism |
+| da | FDG | Få det gjort, selvfølgelig. | initialism |
+| de | SEK | Scheiß erledigt kriegen, natürlich. | initialism |
+| el | ΓΔ | Γίνεται δουλειά, φυσικά. | initialism |
+| en | GSD | Getting stuff done, of course. | initialism |
+| es | AL | Al lío: manos a la obra y trabajo hecho, claro. | initialism |
+| fa | ردیف | یعنی کارها رو ردیف کنیم، معلومه! | shortcut |
+| fi | HM | Hommat maaliin, totta kai. | initialism |
+| fil | TK | Trabahong kumpleto, siyempre! | initialism |
+| fr | ADB | Abattre du boulot, pas brasser de l’air. Évidemment. | initialism |
+| ha | KA | Kammala aiki, mana. | initialism |
+| he | תקתק | לתקתק עניינים, ברור. | shortcut |
+| hi | निपटाओ | काम निपटाने के लिए, ज़ाहिर है! | shortcut |
+| hr | OP | Obavljanje posla, naravno. | initialism |
+| hu | DI | Dolgok intézése, naná! | initialism |
+| id | BK | Beresin kerjaan, tentu saja. | initialism |
+| ig | ỊỌ | Ịrụ ọrụ, n’ezie. | initialism |
+| is | KD | Klára dæmið, auðvitað. | initialism |
+| it | AS | Al sodo: andare al sodo e portare a casa il risultato, ovviamente. | initialism |
+| ja | 片付け | やることをさっさと片付ける。もちろん。 | shortcut |
+| km | ចប់ | បញ្ចប់ការងារ ពិតណាស់! | shortcut |
+| ko | 뚝딱 | 할 일을 뚝딱 해치우자는 거죠. 물론이죠! | shortcut |
+| mk | ЗР | Завршена работа, се разбира. | initialism |
+| nb | FTG | Få ting gjort, selvfølgelig. | initialism |
+| nl | DBA | De boel aanpakken en afmaken, natuurlijk. | initialism |
+| pa | ਨਿਬੇੜੋ | ਕੰਮ ਨਿਬੇੜਨ ਲਈ, ਬੇਸ਼ੱਕ। | shortcut |
+| pl | DR | Do roboty, oczywiście. | initialism |
+| ps | کار | د کارونو د ترسره کولو لپاره، البته. | shortcut |
+| pt_br | FA | Fazer acontecer, claro. | initialism |
+| ro | TF | Treabă făcută, bineînțeles. | initialism |
+| ru | ДДК | Довести дело до конца, конечно. | initialism |
+| sl | OD | Opravljanje dela, seveda. | initialism |
+| sq | KP | Kryerjen e punës, sigurisht. | initialism |
+| sr | ЗП | Завршавање посла, наравно. | initialism |
+| sv | FDG | Få det gjort, såklart. | initialism |
+| sw | KK | Kumaliza kazi, bila shaka. | initialism |
+| ta | முடிப்போம் | வேலைகளை முடிப்போம், நிச்சயமாக. | shortcut |
+| th | ลุย | ลุยงานให้เสร็จสิ แน่นอน! | shortcut |
+| tr | İB | İş bitiren araçlar, tabii ki. | initialism |
+| uk | ДСК | Довести справу до кінця, звісно. | initialism |
+| ur | نمٹاؤ | کام نمٹانے کے لیے، ظاہر ہے! | shortcut |
+| vi | XG | Xử gọn công việc, tất nhiên rồi. | initialism |
+| yo | ṢI | Ṣíṣe iṣẹ́, dájúdájú. | initialism |
+| zh_hans | 搞定 | 把事情搞定，当然啦！ | shortcut |
+| zh_hant | 搞定 | 把事情搞定，當然囉。 | shortcut |
 
-## Findings and boundaries
+## Regression contract
 
-The initial drafts included fabricated Romanian and Albanian initialisms, several headings with incompatible grammatical forms on either side of the label, missing word separators, and a Japanese tooltip promising perfection. Those are concrete defects rather than preferences about how edgy a slogan should be. Corrections restore a complete visible phrase and a tooltip that explains the phrase without adding functional guarantees.
+Catalogs remain the production source. The reviewed pairs and heading fragments
+are recorded in `tests/fixtures/slogan-contract.json`. Tests check every locale
+against that record, require a shorter label than its expansion, and enforce the
+current six-grapheme, no-whitespace label budget. Graphemes avoid treating a
+combining mark as a separate visible letter. Layout still needs browser checks;
+equal grapheme counts do not imply equal pixel widths.
 
-The Amharic, Hausa, Igbo, Pashto and Yoruba variants remain explicitly provisional and should retain the existing native-review-pending notices. A general machine-translation disclosure remains appropriate for the other locales as well. Khmer and Tamil were reviewed conservatively; no claim of native fluency is made.
-
-The visible label can be longer than an acronym, so mobile layout and tooltip hit targets need separate browser qualification. Rendering must escape the before/label/after/tooltip fields and preserve the original tag contract. German owner approval and a semantic review do not establish visual fit.
+When intentionally revising copy, review the new short form and its expansion,
+then update the catalog and review fixture together. Do not change the fixture
+merely to bless an accidentally expanded label. Previous longer phrases remain
+recoverable in Git history.

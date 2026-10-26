@@ -1,0 +1,405 @@
+{
+	"am": {
+		"before": "መሣሪያዎች፦ ",
+		"label": "ጨርስ",
+		"after": "።",
+		"tooltip": "ሥራውን ጨርስ፣ በእርግጥ።",
+		"expansion": "ሥራውን ጨርስ",
+		"kind": "shortcut"
+	},
+	"ar": {
+		"before": "أدوات ",
+		"label": "إنجاز",
+		"after": ".",
+		"tooltip": "إنجاز الشغل، طبعًا.",
+		"expansion": "إنجاز الشغل",
+		"kind": "shortcut"
+	},
+	"az": {
+		"before": "",
+		"label": "İB",
+		"after": " alətləri.",
+		"tooltip": "İş bitirmək, əlbəttə.",
+		"expansion": "İş bitirmək",
+		"kind": "initialism"
+	},
+	"bg": {
+		"before": "Инструменти за ",
+		"label": "СР",
+		"after": ".",
+		"tooltip": "Свършена работа, разбира се.",
+		"expansion": "Свършена работа",
+		"kind": "initialism"
+	},
+	"bn": {
+		"before": "কাজের টুলস: ",
+		"label": "সারো",
+		"after": "।",
+		"tooltip": "কাজ সেরে ফেলার জন্য, অবশ্যই!",
+		"expansion": "কাজ সেরে ফেলা",
+		"kind": "shortcut"
+	},
+	"bs": {
+		"before": "Alati za ",
+		"label": "ZP",
+		"after": ".",
+		"tooltip": "Završavanje posla, naravno.",
+		"expansion": "Završavanje posla",
+		"kind": "initialism"
+	},
+	"da": {
+		"before": "Værktøjer til at ",
+		"label": "FDG",
+		"after": ".",
+		"tooltip": "Få det gjort, selvfølgelig.",
+		"expansion": "Få det gjort",
+		"kind": "initialism"
+	},
+	"de": {
+		"before": "Werkzeuge für ",
+		"label": "SEK",
+		"after": ".",
+		"tooltip": "Scheiß erledigt kriegen, natürlich.",
+		"expansion": "Scheiß erledigt kriegen",
+		"kind": "initialism"
+	},
+	"el": {
+		"before": "Εργαλεία για να ",
+		"label": "ΓΔ",
+		"after": ".",
+		"tooltip": "Γίνεται δουλειά, φυσικά.",
+		"expansion": "Γίνεται δουλειά",
+		"kind": "initialism"
+	},
+	"en": {
+		"before": "Tools for ",
+		"label": "GSD",
+		"after": ".",
+		"tooltip": "Getting stuff done, of course.",
+		"expansion": "Getting stuff done",
+		"kind": "initialism"
+	},
+	"es": {
+		"before": "Herramientas para ir ",
+		"label": "AL",
+		"after": ".",
+		"tooltip": "Al lío: manos a la obra y trabajo hecho, claro.",
+		"expansion": "Al lío",
+		"kind": "initialism"
+	},
+	"fa": {
+		"before": "ابزارهای «",
+		"label": "ردیف",
+		"after": "».",
+		"tooltip": "یعنی کارها رو ردیف کنیم، معلومه!",
+		"expansion": "کارها رو ردیف کنیم",
+		"kind": "shortcut"
+	},
+	"fi": {
+		"before": "Työkalut: ",
+		"label": "HM",
+		"after": ".",
+		"tooltip": "Hommat maaliin, totta kai.",
+		"expansion": "Hommat maaliin",
+		"kind": "initialism"
+	},
+	"fil": {
+		"before": "Mga gamit para sa ",
+		"label": "TK",
+		"after": ".",
+		"tooltip": "Trabahong kumpleto, siyempre!",
+		"expansion": "Trabahong kumpleto",
+		"kind": "initialism"
+	},
+	"fr": {
+		"before": "Des outils pour ",
+		"label": "ADB",
+		"after": ".",
+		"tooltip": "Abattre du boulot, pas brasser de l’air. Évidemment.",
+		"expansion": "Abattre du boulot",
+		"kind": "initialism"
+	},
+	"ha": {
+		"before": "Kayan aiki don ",
+		"label": "KA",
+		"after": ".",
+		"tooltip": "Kammala aiki, mana.",
+		"expansion": "Kammala aiki",
+		"kind": "initialism"
+	},
+	"he": {
+		"before": "כלים ל",
+		"label": "תקתק",
+		"after": ".",
+		"tooltip": "לתקתק עניינים, ברור.",
+		"expansion": "לתקתק עניינים",
+		"kind": "shortcut"
+	},
+	"hi": {
+		"before": "काम के औज़ार: ",
+		"label": "निपटाओ",
+		"after": "।",
+		"tooltip": "काम निपटाने के लिए, ज़ाहिर है!",
+		"expansion": "काम निपटाने",
+		"kind": "shortcut"
+	},
+	"hr": {
+		"before": "Alati za ",
+		"label": "OP",
+		"after": ".",
+		"tooltip": "Obavljanje posla, naravno.",
+		"expansion": "Obavljanje posla",
+		"kind": "initialism"
+	},
+	"hu": {
+		"before": "Eszközök: ",
+		"label": "DI",
+		"after": ".",
+		"tooltip": "Dolgok intézése, naná!",
+		"expansion": "Dolgok intézése",
+		"kind": "initialism"
+	},
+	"id": {
+		"before": "Alat buat ",
+		"label": "BK",
+		"after": ".",
+		"tooltip": "Beresin kerjaan, tentu saja.",
+		"expansion": "Beresin kerjaan",
+		"kind": "initialism"
+	},
+	"ig": {
+		"before": "Ngwaọrụ maka ",
+		"label": "ỊỌ",
+		"after": ".",
+		"tooltip": "Ịrụ ọrụ, n’ezie.",
+		"expansion": "Ịrụ ọrụ",
+		"kind": "initialism"
+	},
+	"is": {
+		"before": "Verkfæri til að ",
+		"label": "KD",
+		"after": ".",
+		"tooltip": "Klára dæmið, auðvitað.",
+		"expansion": "Klára dæmið",
+		"kind": "initialism"
+	},
+	"it": {
+		"before": "Strumenti per andare ",
+		"label": "AS",
+		"after": ".",
+		"tooltip": "Al sodo: andare al sodo e portare a casa il risultato, ovviamente.",
+		"expansion": "Al sodo",
+		"kind": "initialism"
+	},
+	"ja": {
+		"before": "",
+		"label": "片付け",
+		"after": "のためのツール。",
+		"tooltip": "やることをさっさと片付ける。もちろん。",
+		"expansion": "やることを片付ける",
+		"kind": "shortcut"
+	},
+	"km": {
+		"before": "ឧបករណ៍៖ ",
+		"label": "ចប់",
+		"after": "។",
+		"tooltip": "បញ្ចប់ការងារ ពិតណាស់!",
+		"expansion": "បញ្ចប់ការងារ",
+		"kind": "shortcut"
+	},
+	"ko": {
+		"before": "",
+		"label": "뚝딱",
+		"after": " 해내는 도구.",
+		"tooltip": "할 일을 뚝딱 해치우자는 거죠. 물론이죠!",
+		"expansion": "할 일을 뚝딱 해치우기",
+		"kind": "shortcut"
+	},
+	"mk": {
+		"before": "Алатки за ",
+		"label": "ЗР",
+		"after": ".",
+		"tooltip": "Завршена работа, се разбира.",
+		"expansion": "Завршена работа",
+		"kind": "initialism"
+	},
+	"nb": {
+		"before": "Verktøy for å ",
+		"label": "FTG",
+		"after": ".",
+		"tooltip": "Få ting gjort, selvfølgelig.",
+		"expansion": "Få ting gjort",
+		"kind": "initialism"
+	},
+	"nl": {
+		"before": "Gereedschap: ",
+		"label": "DBA",
+		"after": ".",
+		"tooltip": "De boel aanpakken en afmaken, natuurlijk.",
+		"expansion": "De boel aanpakken",
+		"kind": "initialism"
+	},
+	"pa": {
+		"before": "ਔਜ਼ਾਰ: ",
+		"label": "ਨਿਬੇੜੋ",
+		"after": "।",
+		"tooltip": "ਕੰਮ ਨਿਬੇੜਨ ਲਈ, ਬੇਸ਼ੱਕ।",
+		"expansion": "ਕੰਮ ਨਿਬੇੜਨ",
+		"kind": "shortcut"
+	},
+	"pl": {
+		"before": "Narzędzia: ",
+		"label": "DR",
+		"after": ".",
+		"tooltip": "Do roboty, oczywiście.",
+		"expansion": "Do roboty",
+		"kind": "initialism"
+	},
+	"ps": {
+		"before": "د ",
+		"label": "کار",
+		"after": " وسایل.",
+		"tooltip": "د کارونو د ترسره کولو لپاره، البته.",
+		"expansion": "د کارونو ترسره کول",
+		"kind": "shortcut"
+	},
+	"pt_br": {
+		"before": "Ferramentas para ",
+		"label": "FA",
+		"after": ".",
+		"tooltip": "Fazer acontecer, claro.",
+		"expansion": "Fazer acontecer",
+		"kind": "initialism"
+	},
+	"ro": {
+		"before": "Unelte pentru ",
+		"label": "TF",
+		"after": ".",
+		"tooltip": "Treabă făcută, bineînțeles.",
+		"expansion": "Treabă făcută",
+		"kind": "initialism"
+	},
+	"ru": {
+		"before": "Инструменты для ",
+		"label": "ДДК",
+		"after": ".",
+		"tooltip": "Довести дело до конца, конечно.",
+		"expansion": "Довести дело до конца",
+		"kind": "initialism",
+		"initialismRule": "Content-word initials: Довести + дело + конца; omit the preposition до."
+	},
+	"sl": {
+		"before": "Orodja za ",
+		"label": "OD",
+		"after": ".",
+		"tooltip": "Opravljanje dela, seveda.",
+		"expansion": "Opravljanje dela",
+		"kind": "initialism"
+	},
+	"sq": {
+		"before": "Mjete për ",
+		"label": "KP",
+		"after": ".",
+		"tooltip": "Kryerjen e punës, sigurisht.",
+		"expansion": "Kryerjen e punës",
+		"kind": "initialism",
+		"initialismRule": "Content-word initials: Kryerjen + punës; omit the linking word e."
+	},
+	"sr": {
+		"before": "Алати за ",
+		"label": "ЗП",
+		"after": ".",
+		"tooltip": "Завршавање посла, наравно.",
+		"expansion": "Завршавање посла",
+		"kind": "initialism"
+	},
+	"sv": {
+		"before": "Verktyg för att ",
+		"label": "FDG",
+		"after": ".",
+		"tooltip": "Få det gjort, såklart.",
+		"expansion": "Få det gjort",
+		"kind": "initialism"
+	},
+	"sw": {
+		"before": "Zana za ",
+		"label": "KK",
+		"after": ".",
+		"tooltip": "Kumaliza kazi, bila shaka.",
+		"expansion": "Kumaliza kazi",
+		"kind": "initialism"
+	},
+	"ta": {
+		"before": "கருவிகள்: ",
+		"label": "முடிப்போம்",
+		"after": ".",
+		"tooltip": "வேலைகளை முடிப்போம், நிச்சயமாக.",
+		"expansion": "வேலைகளை முடிப்போம்",
+		"kind": "shortcut"
+	},
+	"th": {
+		"before": "เครื่องมือพร้อม",
+		"label": "ลุย",
+		"after": "!",
+		"tooltip": "ลุยงานให้เสร็จสิ แน่นอน!",
+		"expansion": "ลุยงานให้เสร็จ",
+		"kind": "shortcut"
+	},
+	"tr": {
+		"before": "",
+		"label": "İB",
+		"after": " araçları.",
+		"tooltip": "İş bitiren araçlar, tabii ki.",
+		"expansion": "İş bitiren",
+		"kind": "initialism"
+	},
+	"uk": {
+		"before": "Інструменти для ",
+		"label": "ДСК",
+		"after": ".",
+		"tooltip": "Довести справу до кінця, звісно.",
+		"expansion": "Довести справу до кінця",
+		"kind": "initialism",
+		"initialismRule": "Content-word initials: Довести + справу + кінця; omit the preposition до."
+	},
+	"ur": {
+		"before": "اوزار: ",
+		"label": "نمٹاؤ",
+		"after": "۔",
+		"tooltip": "کام نمٹانے کے لیے، ظاہر ہے!",
+		"expansion": "کام نمٹانے",
+		"kind": "shortcut"
+	},
+	"vi": {
+		"before": "Công cụ để ",
+		"label": "XG",
+		"after": ".",
+		"tooltip": "Xử gọn công việc, tất nhiên rồi.",
+		"expansion": "Xử gọn",
+		"kind": "initialism"
+	},
+	"yo": {
+		"before": "Àwọn irinṣẹ́ fún ",
+		"label": "ṢI",
+		"after": ".",
+		"tooltip": "Ṣíṣe iṣẹ́, dájúdájú.",
+		"expansion": "Ṣíṣe iṣẹ́",
+		"kind": "initialism"
+	},
+	"zh_hans": {
+		"before": "帮你",
+		"label": "搞定",
+		"after": "的工具。",
+		"tooltip": "把事情搞定，当然啦！",
+		"expansion": "把事情搞定",
+		"kind": "shortcut"
+	},
+	"zh_hant": {
+		"before": "幫你",
+		"label": "搞定",
+		"after": "的工具。",
+		"tooltip": "把事情搞定，當然囉。",
+		"expansion": "把事情搞定",
+		"kind": "shortcut"
+	}
+}

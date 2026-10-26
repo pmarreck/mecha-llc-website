@@ -32,6 +32,7 @@ annotate=[
 	scripts/translation-policy.mjs = Reviewed locale-specific notice policy and legal source links
 	test = Master Bash test runner: runs tests/*.sh, accumulates failures, exit = fail count
 	tests/encoding-integrity.sh = Set-classifier: no double/triple-encoded UTF-8 (mojibake) in any tracked text file
+	tests/fixtures/slogan-contract.json = Reviewed compact labels, expansions and tooltip contracts for all50 locales
 	tests/footer-consistency.sh = Set-classifier: every served HTML page links all 4 legal/contact surfaces
 	tests/mfic-no-drift.sh = Drift gate: re-renders MFIC page from source, fails if committed HTML stale (skips if source absent)
 	tests/policy-pages.sh = Asserts Paddle-required legal pages exist with required sections

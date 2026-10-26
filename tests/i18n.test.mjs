@@ -142,15 +142,23 @@ test('German uses the approved SEK wordplay and GSD is localizable, unlike produ
 	assert.throws(()=>validateCatalog({x:'Mecha Validate'},{x:'Mecha SEK'}),/brand/);
 });
 test('reviewed visible headings do not disappear into the hidden GSD definition', () => {
-	for(const [code,expected] of [['ja','さっさと片付けるためのツール。'],['ko','일을 해치우는 도구.'],['fr','Des outils pour abattre du boulot.']]) {
+	const contract=JSON.parse(readFileSync(new URL('./fixtures/slogan-contract.json',import.meta.url)));
+	assert.deepEqual(Object.keys(contract).sort(),locales.map(l=>l.code).sort());
+	const graphemes=new Intl.Segmenter(undefined,{granularity:'grapheme'});
+	for(const {code} of locales) {
+		const expected=contract[code];
 		const catalog=JSON.parse(readFileSync(new URL(`../i18n/${code}.json`,import.meta.url)));
-		const heading=catalog.s_21fceb06142db16f.split('<br>')[0]
+		const hero=catalog.s_21fceb06142db16f;
+		const label=hero.match(/<button[^>]*>([^<>]+)<\/button>/)?.[1];
+		const tooltip=hero.match(/role="tooltip">([^<>]+)<\/span>/)?.[1];
+		assert.equal(label,expected.label,`${code}: approved short label`);
+		assert.equal(tooltip,expected.tooltip,`${code}: approved expanded meaning`);
+		assert(!/\s/u.test(label),`${code}: label must remain a shortcut, not a full phrase`);
+		assert([...graphemes.segment(label)].length<=6,`${code}: compact label budget`);
+		assert(expected.expansion.length>label.length,`${code}: the label must shorten its expansion`);
+		const heading=hero.split('<br>')[0]
 			.replace(/<span class="term-tooltip"[^>]*>[\s\S]*?<\/span>/,'')
 			.replace(/<[^>]*>/g,'');
-		assert.equal(heading,expected);
-	}
-	for(const {code} of locales) {
-		const catalog=JSON.parse(readFileSync(new URL(`../i18n/${code}.json`,import.meta.url)));
-		assert.match(catalog.s_21fceb06142db16f,/<button[^>]*>[^<>]+<\/button>/,code);
+		assert.equal(heading,expected.before+label+expected.after,`${code}: visible headline stays complete`);
 	}
 });
